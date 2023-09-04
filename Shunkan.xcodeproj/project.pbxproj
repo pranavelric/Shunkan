@@ -14,6 +14,11 @@
 		1E0532712AA4CF2C005409BA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0532702AA4CF2C005409BA /* MainTabView.swift */; };
 		1E0532732AA4E132005409BA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0532722AA4E132005409BA /* ProfileView.swift */; };
 		1E0532762AA51895005409BA /* UserStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0532752AA51895005409BA /* UserStackView.swift */; };
+		1E7A87F72AA5AC8C00F595E7 /* Highlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87F62AA5AC8C00F595E7 /* Highlights.swift */; };
+		1E7A87F92AA5AD0F00F595E7 /* HighlightStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87F82AA5AD0F00F595E7 /* HighlightStory.swift */; };
+		1E7A87FC2AA5C89300F595E7 /* Grids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87FB2AA5C89300F595E7 /* Grids.swift */; };
+		1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */; };
+		1EF037CA2AA5FBE300032D43 /* HeaderTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF037C92AA5FBE300032D43 /* HeaderTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		1E0532702AA4CF2C005409BA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		1E0532722AA4E132005409BA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1E0532752AA51895005409BA /* UserStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStackView.swift; sourceTree = "<group>"; };
+		1E7A87F62AA5AC8C00F595E7 /* Highlights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlights.swift; sourceTree = "<group>"; };
+		1E7A87F82AA5AD0F00F595E7 /* HighlightStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightStory.swift; sourceTree = "<group>"; };
+		1E7A87FB2AA5C89300F595E7 /* Grids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grids.swift; sourceTree = "<group>"; };
+		1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyGrid.swift; sourceTree = "<group>"; };
+		1EF037C92AA5FBE300032D43 /* HeaderTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,8 @@
 		1E05326B2AA4CE95005409BA /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A87FA2AA5C88C00F595E7 /* Grids */,
+				1E7A87F52AA5AC7E00F595E7 /* highlights */,
 				1E0532722AA4E132005409BA /* ProfileView.swift */,
 			);
 			path = Profile;
@@ -178,6 +190,25 @@
 				1E0532752AA51895005409BA /* UserStackView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1E7A87F52AA5AC7E00F595E7 /* highlights */ = {
+			isa = PBXGroup;
+			children = (
+				1E7A87F62AA5AC8C00F595E7 /* Highlights.swift */,
+				1E7A87F82AA5AD0F00F595E7 /* HighlightStory.swift */,
+			);
+			path = highlights;
+			sourceTree = "<group>";
+		};
+		1E7A87FA2AA5C88C00F595E7 /* Grids */ = {
+			isa = PBXGroup;
+			children = (
+				1E7A87FB2AA5C89300F595E7 /* Grids.swift */,
+				1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */,
+				1EF037C92AA5FBE300032D43 /* HeaderTabBar.swift */,
+			);
+			path = Grids;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,10 +282,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0532732AA4E132005409BA /* ProfileView.swift in Sources */,
+				1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */,
 				1E0532582AA4CE06005409BA /* ContentView.swift in Sources */,
+				1E7A87F72AA5AC8C00F595E7 /* Highlights.swift in Sources */,
+				1EF037CA2AA5FBE300032D43 /* HeaderTabBar.swift in Sources */,
 				1E0532562AA4CE06005409BA /* ShunkanApp.swift in Sources */,
 				1E0532712AA4CF2C005409BA /* MainTabView.swift in Sources */,
 				1E0532762AA51895005409BA /* UserStackView.swift in Sources */,
+				1E7A87F92AA5AD0F00F595E7 /* HighlightStory.swift in Sources */,
+				1E7A87FC2AA5C89300F595E7 /* Grids.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

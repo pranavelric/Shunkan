@@ -26,7 +26,7 @@ struct MainTabView: View {
             Text("Reels").tabItem {
                 Image(systemName: "play.rectangle")
             }
-            Text("Profile").tabItem {
+           ProfileView().tabItem {
                 Image(systemName: "person") // set image to profile view
             }
         }

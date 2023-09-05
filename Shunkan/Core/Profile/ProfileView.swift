@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    var gradient = Gradient(colors: [.yellow, .red, .purple, .orange, .pink, .red])
+
+                  
     @State var selectedTab:Int = 0
     @State var gridSize: Int = 30
     private let gridItems: [GridItem] = [
@@ -154,10 +155,7 @@ struct ProfileView: View {
                 }
                 
             }
-//            .navigationBarHidden(true)
-//            .background()
-//            .overlay(overlayView: Banner.init(data: Banner.BannerDataModel(title: "Instagram", detail: "You have clicked on Item", type: .info), show: $isToast)
-//                     , show: $isToast)
+
             
         }
 

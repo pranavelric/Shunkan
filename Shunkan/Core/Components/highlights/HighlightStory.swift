@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HighlightStory: View {
+    var gradient = Gradient(colors: [.yellow, .red, .purple, .orange, .pink, .red])
+//        .overlay(Circle().stroke(LinearGradient( gradient: gradient, startPoint: .bottomLeading, endPoint: .topTrailing) , style: StrokeStyle(lineWidth: 2.5, lineCap: .round)))
     var body: some View {
         Button(action: {}) {
             VStack{
@@ -21,7 +23,8 @@ struct HighlightStory: View {
                         RoundedRectangle(cornerRadius: 30)
                             .stroke(Color.gray.opacity(0.4), lineWidth: 2)
                     )
-                    .padding([.top, .horizontal], 5)
+//                    .padding([.top, .horizontal], 5)
+                  
                 
                 Text("pranav.elric")
                     .foregroundColor(.gray)

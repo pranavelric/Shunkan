@@ -15,7 +15,8 @@ struct FeedView: View {
                     ForEach(0 ... 10, id: \.self){ post in
                         FeedCell()
                     }
-                }.padding(.top,8)
+                }
+                .padding(.top,8)
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)

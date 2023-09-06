@@ -17,7 +17,7 @@ struct MainTabView: View {
             FeedView().tabItem {
                 Image(systemName: "house")
             }
-            Text("Search").tabItem {
+            SearchView().tabItem {
                 Image(systemName: "magnifyingglass")
             }
             Text("Upload post").tabItem {
@@ -30,7 +30,9 @@ struct MainTabView: View {
                 Image(systemName: "person") // set image to profile view
             }
         }
+        .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight: UIScreen.main.bounds.height, maxHeight: .infinity, alignment: .topLeading)
         .accentColor(.black)
+
     }
 }
 

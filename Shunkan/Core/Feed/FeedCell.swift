@@ -42,6 +42,7 @@ struct FeedCell: View {
                 .scaledToFill()
                 .frame(height: 400)
                 .clipShape(Rectangle())
+
             
             // action-buttons
             HStack{

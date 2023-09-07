@@ -1,5 +1,5 @@
 //
-//  AddEmailView.swift
+//  CreateUsernameView.swift
 //  Shunkan
 //
 //  Created by Pranav Choudhary on 06/09/23.
@@ -7,29 +7,28 @@
 
 import SwiftUI
 
-struct AddEmailView: View {
-    @State private var email:String = ""
+struct CreateUsernameView: View {
+    @State private var username:String = ""
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
-            Text("Add your email")
+            Text("Create username")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text("You'll use this email to sign into your account")
+            Text("Pick a username for your new account. You can always change it later")
                 .font(.footnote)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.top,1)
                 .padding(.bottom,10)
                 .padding(.horizontal,24)
-            TextField("Enter your email", text: $email)
+            TextField("Username", text: $username)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
             
             NavigationLink{
-                CreateUsernameView()
-                    .navigationBarBackButtonHidden(true)
+                CreatePasswordView().navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")
                          .font(.subheadline)
@@ -56,8 +55,8 @@ struct AddEmailView: View {
     }
 }
 
-struct AddEmailView_Previews: PreviewProvider {
+struct CreateUsernameView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEmailView()
+        CreateUsernameView()
     }
 }

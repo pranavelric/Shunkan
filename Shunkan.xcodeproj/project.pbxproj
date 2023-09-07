@@ -25,10 +25,13 @@
 		1E3815D42AA87F6E00B5AFA3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815D32AA87F6E00B5AFA3 /* SignInView.swift */; };
 		1E5942DE2AA89F9600BCE06E /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */; };
 		1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */; };
+		1E5942E22AA8BF9500BCE06E /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */; };
+		1E5942E42AA8C25500BCE06E /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942E32AA8C25500BCE06E /* CreatePasswordView.swift */; };
 		1E7A87F72AA5AC8C00F595E7 /* Highlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87F62AA5AC8C00F595E7 /* Highlights.swift */; };
 		1E7A87F92AA5AD0F00F595E7 /* HighlightStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87F82AA5AD0F00F595E7 /* HighlightStory.swift */; };
 		1E7A87FC2AA5C89300F595E7 /* Grids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87FB2AA5C89300F595E7 /* Grids.swift */; };
 		1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */; };
+		1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */; };
 		1EDA966F2AA6F8C60073C4C0 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDA966E2AA6F8C60073C4C0 /* FeedView.swift */; };
 		1EDA96712AA6F8CD0073C4C0 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDA96702AA6F8CD0073C4C0 /* FeedCell.swift */; };
 		1EF037CA2AA5FBE300032D43 /* HeaderTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF037C92AA5FBE300032D43 /* HeaderTabBar.swift */; };
@@ -53,10 +56,13 @@
 		1E3815D32AA87F6E00B5AFA3 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
 		1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
+		1E5942E32AA8C25500BCE06E /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
 		1E7A87F62AA5AC8C00F595E7 /* Highlights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlights.swift; sourceTree = "<group>"; };
 		1E7A87F82AA5AD0F00F595E7 /* HighlightStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightStory.swift; sourceTree = "<group>"; };
 		1E7A87FB2AA5C89300F595E7 /* Grids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grids.swift; sourceTree = "<group>"; };
 		1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyGrid.swift; sourceTree = "<group>"; };
+		1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUp.swift; sourceTree = "<group>"; };
 		1EDA966E2AA6F8C60073C4C0 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		1EDA96702AA6F8CD0073C4C0 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1EF037C92AA5FBE300032D43 /* HeaderTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabBar.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 				1E3815D12AA84F4C00B5AFA3 /* LoginView.swift */,
 				1E3815D32AA87F6E00B5AFA3 /* SignInView.swift */,
 				1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */,
+				1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */,
+				1E5942E32AA8C25500BCE06E /* CreatePasswordView.swift */,
+				1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -345,14 +354,17 @@
 				1EDA966F2AA6F8C60073C4C0 /* FeedView.swift in Sources */,
 				1E07910E2AA7693A00F7A79C /* Layout3.swift in Sources */,
 				1E0791042AA7646800F7A79C /* SearchView.swift in Sources */,
+				1E5942E22AA8BF9500BCE06E /* CreateUsernameView.swift in Sources */,
 				1E3815D02AA84CFF00B5AFA3 /* SearchList.swift in Sources */,
 				1E0532712AA4CF2C005409BA /* MainTabView.swift in Sources */,
 				1E0532762AA51895005409BA /* UserStackView.swift in Sources */,
+				1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */,
 				1E3815D42AA87F6E00B5AFA3 /* SignInView.swift in Sources */,
 				1E07910C2AA768ED00F7A79C /* Layout2.swift in Sources */,
 				1E7A87F92AA5AD0F00F595E7 /* HighlightStory.swift in Sources */,
 				1E3815D22AA84F4C00B5AFA3 /* LoginView.swift in Sources */,
 				1E0791102AA76E7E00F7A79C /* SearchBar.swift in Sources */,
+				1E5942E42AA8C25500BCE06E /* CreatePasswordView.swift in Sources */,
 				1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */,
 				1E7A87FC2AA5C89300F595E7 /* Grids.swift in Sources */,
 			);

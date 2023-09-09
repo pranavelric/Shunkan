@@ -6,36 +6,53 @@
 //
 
 import SwiftUI
-
+import SDWebImageSwiftUI
 struct ProfileView: View {
 
-                  
+             
+    let user: User
     @State var selectedTab:Int = 0
     @State var gridSize: Int = 30
+    @State var backButtonVisible: Bool = false
     private let gridItems: [GridItem] = [
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1)
     ]
-
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
+
             ScrollView{
                 // header
                             VStack(spacing: 10){
                                 // pic and stats
                                 HStack{
-                                    Image("profile_placeholder")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 80,height: 80)
-                                        .clipShape(Circle())
+                             
+                                    
+                                    if ((user.profilePictureURL) != nil){
+                                        AnimatedImage(url:   URL(string: user.profilePictureURL ?? "") )
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 80,height: 80)
+                                            .clipShape(Circle())
+                                        
+                                    }else{
+                                        Image("profile_placeholder")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 80,height: 80)
+                                            .clipShape(Circle())
+                                    }
+                                    
+                                    
+                                    
+                                    
                                     Spacer()
                                     HStack(spacing: 8){
-                                        UserStackView(value: 3, title: "Posts")
-                                        UserStackView(value: 23, title: "Followers")
-                                        UserStackView(value: 13, title: "Following")
+                                        UserStackView(value: user.posts.count, title: "Posts")
+                                        UserStackView(value: user.followers.count, title: "Followers")
+                                        UserStackView(value: user.following.count, title: "Following")
                                     }
                 
                                 }
@@ -46,15 +63,15 @@ struct ProfileView: View {
                                 // name and bio
                                 VStack(alignment: .leading){
                 
-                                    Text("Pranav Elric")
+                                    Text(user.fullName ?? user.username)
                                         .font(.footnote)
                                         .fontWeight(.semibold)
                 
-                                    Text("Go beyond plus ultra")
+                                    Text( user.bio ?? "Go beyond plus ultra")
                                         .font(.footnote)
                 
-                                    Link(destination: URL(string: "https://pranavelric.dev")!) {
-                                        Label("pranavelric.dev", systemImage: "link")
+                                    Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")")!) {
+                                        Label( user.bioLink ?? "pranavelric.dev", systemImage: "link")
                                             .imageScale(.small).font(.footnote)
                                     }
                 
@@ -120,52 +137,41 @@ struct ProfileView: View {
 
 
             }
-//            .navigationTitle("Pranav Elric")
-//            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(user.username)
+            .navigationBarTitleDisplayMode(.inline)
+        
             .toolbar{
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                                  
-                        Text("Pranav Elrix")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
-                        Image("bluetick")
-                            .resizable()
-                            .aspectRatio( contentMode: .fill)
-                            .frame(width: 20, height: 20, alignment: .leading)
-                            .opacity(1)
-                    }
+             
+
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Image(systemName: "chevron.left")
+                            .imageScale(.large)
+                            .onTapGesture {
+                                dismiss()
+                            }
                 }
+                
+        
                 ToolbarItem(placement: .navigationBarTrailing){
                     
                     HStack{
                         Button{
                             
                         } label: {
-                            Image(systemName: "plus.square.fill").foregroundColor(.gray.opacity(0.6))
+                            Image(systemName: "ellipsis").foregroundColor(.gray.opacity(0.6))
                         }
-                        Button{
-                            
-                        } label: {
-                            Image(systemName: "line.3.horizontal").foregroundColor(.gray.opacity(0.6))
-                        }
+                     
                     }
                 }
                 
             }
 
-            
-        }
-
-            
         }
     }
     
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(user: User.MOCK_USERS[0])
     }
 }

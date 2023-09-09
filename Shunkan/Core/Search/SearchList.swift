@@ -6,33 +6,57 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SearchList: View {
     @State private var searchableText = ""
     var body: some View {
-        NavigationView {
+        NavigationStack{
             ScrollView{
                 LazyVStack(spacing:12) {
-                    ForEach(0 ... 15, id: \.self){ user in
-                        HStack{
-                            Image("profile_placeholder")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40,height: 40)
-                                .clipShape(Circle())
-                            
-                            VStack(alignment: .leading){
-                                Text("Pranav Elric")
-                                    .fontWeight(.semibold)
-                                Text("Pranav Choudhary")
+                    ForEach(User.MOCK_USERS){ user in
+                        NavigationLink (value: user, label: {
+                            HStack{
+                                
+                                
+                                if ((user.profilePictureURL) != nil){
+                                    AnimatedImage(url:   URL(string: user.profilePictureURL ?? "") )
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40,height: 40)
+                                        .clipShape(Circle())
                                     
-                            }.font(.footnote)
-                            Spacer()
-                        }.padding(.horizontal)
-                        
+                                }else{
+                                    Image("profile_placeholder")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40,height: 40)
+                                        .clipShape(Circle())
+                                }
+                                
+                                
+                                
+                                VStack(alignment: .leading){
+                                    Text(user.username)
+                                        .fontWeight(.semibold)
+                                        
+                                    if let fullname = user.fullName{
+                                        Text(fullname).font(.footnote)
+                                         
+                                    }
+                                    
+                                    
+                                }.font(.footnote)
+                                Spacer()
+                            }.padding(.horizontal)
+                                .foregroundColor(.black)
+                        })
                     }
                 }.padding(.top,8)
-                    .searchable(text: $searchableText, prompt: "Search...")
+//                    .searchable(text: $searchableText, prompt: "Search...")
+            }
+            .navigationDestination(for: User.self) { user in
+                ProfileView(user: user).navigationBarBackButtonHidden(true)
             }
         }
     }

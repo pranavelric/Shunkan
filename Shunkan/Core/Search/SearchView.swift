@@ -13,7 +13,7 @@ struct SearchView: View {
   
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
               
           
@@ -44,18 +44,7 @@ struct SearchView: View {
                                     }
                                 }
                 
-                
-                
-                
-       
-                
             }
-            
-            //        .navigationTitle("")
-            //                    .navigationBarHidden(true)
-            
-            
-//            .navigationTitle("ddd-").navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                               trailing:
                                  Text("")

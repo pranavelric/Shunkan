@@ -6,26 +6,42 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct FeedCell: View {
+    let post: Post
     var body: some View {
         VStack {
             // profile-pic- username feed-settings button
             HStack{
-                Image("profile_placeholder")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 30,height: 30)
-                    .clipShape(Circle())
+              
                 
-                Text("Pranav Elric")
+                if ((post.user?.profilePictureURL) != nil){
+                    AnimatedImage(url:   URL(string: post.user?.profilePictureURL ?? "") )
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30,height: 30)
+                        .clipShape(Circle())
+                    
+                }else{
+                    Image("profile_placeholder")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30,height: 30)
+                        .clipShape(Circle())
+                }
+                
+                
+                Text(post.user?.username ?? "")
                     .font(.footnote)
                     .fontWeight(.semibold)
-                Image("bluetick")
-                    .resizable()
-                    .aspectRatio( contentMode: .fill)
-                    .frame(width: 12, height: 12, alignment: .leading)
-                    .opacity(1)
+                if((post.user?.isBlueTickEnabled)  != nil && post.user?.isBlueTickEnabled != false){
+                    Image("bluetick")
+                        .resizable()
+                        .aspectRatio( contentMode: .fill)
+                        .frame(width: 12, height: 12, alignment: .leading)
+                        .opacity(1)
+                }
                 Spacer()
                 
                 Button{
@@ -37,12 +53,19 @@ struct FeedCell: View {
             }.padding(.horizontal,8)
             
             // post content
-            Image("profile_placeholder")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 400)
-                .clipShape(Rectangle())
-
+            if ((post.imageURL) != nil){
+                AnimatedImage(url:   URL(string: post.imageURL) )
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 400)
+                    .clipShape(Rectangle())
+            }else{
+                Image("profile_placeholder")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 400)
+                    .clipShape(Rectangle())
+            }
             
             // action-buttons
             HStack{
@@ -80,7 +103,7 @@ struct FeedCell: View {
                 
             
             //likes label
-            Text("23 likes")
+            Text("\(post.likes.count) likes")
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity,alignment: .leading)
@@ -89,9 +112,9 @@ struct FeedCell: View {
             //caption label
             
             HStack {
-                Text("Pranav Elric ")
+                Text("\(post.user?.username ?? "") ")
                     .fontWeight(.semibold) +
-                Text("this is some test caption")
+                Text("\(post.caption)")
                 
             } .font(.footnote)
                 .frame(maxWidth: .infinity,alignment: .leading)
@@ -99,19 +122,21 @@ struct FeedCell: View {
                 .padding(.leading,10)
             
             //comment-label
-            Text("View all 24 comments")
-                .font(.footnote)
-                .frame(maxWidth: .infinity,alignment: .leading)
-                .padding(.leading,10)
-                .padding(.top,1)
-                .foregroundColor(.gray)
-            
+            if post.comments.count > 0{
+                Text("View all \(post.comments.count) comments")
+                    .font(.footnote)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .padding(.leading,10)
+                    .padding(.top,-6)
+                    .foregroundColor(.gray)
+            }
+      
             // time label
-            Text("6h ago")
+            Text("\(post.timestamp.timeAgoSinceNow())")
                 .font(.footnote)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.leading,10)
-                .padding(.top,1)
+                .padding(.top,-8)
                 .foregroundColor(.gray)
             
         }
@@ -120,6 +145,6 @@ struct FeedCell: View {
 
 struct FeedCell_Previews: PreviewProvider {
     static var previews: some View {
-        FeedCell()
+        FeedCell(post: Post.MOCK_Posts[0])
     }
 }

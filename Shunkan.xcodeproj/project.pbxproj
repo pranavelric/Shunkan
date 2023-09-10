@@ -33,6 +33,10 @@
 		1E3CE20B2AABA4FC00BCC3F8 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE20A2AABA4FC00BCC3F8 /* Analytics.swift */; };
 		1E3CE20D2AABA7A800BCC3F8 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE20C2AABA7A800BCC3F8 /* Story.swift */; };
 		1E3CE20F2AABA7C300BCC3F8 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE20E2AABA7C300BCC3F8 /* Highlight.swift */; };
+		1E4CD6532AAE0C5900404307 /* UploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD6522AAE0C5900404307 /* UploadPostView.swift */; };
+		1E4CD6562AAE112700404307 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1E4CD6552AAE112700404307 /* YPImagePicker */; };
+		1E4CD6582AAE121300404307 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD6572AAE121300404307 /* PhotoPicker.swift */; };
+		1E4CD65A2AAE185E00404307 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD6592AAE185E00404307 /* NewPostView.swift */; };
 		1E5942DE2AA89F9600BCE06E /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */; };
 		1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */; };
 		1E5942E22AA8BF9500BCE06E /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */; };
@@ -76,6 +80,9 @@
 		1E3CE20A2AABA4FC00BCC3F8 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		1E3CE20C2AABA7A800BCC3F8 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		1E3CE20E2AABA7C300BCC3F8 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
+		1E4CD6522AAE0C5900404307 /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
+		1E4CD6572AAE121300404307 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		1E4CD6592AAE185E00404307 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
 		1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 		1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
@@ -98,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E07910A2AA7684100F7A79C /* SDWebImageSwiftUI in Frameworks */,
+				1E4CD6562AAE112700404307 /* YPImagePicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +267,9 @@
 		1E05326F2AA4CEEB005409BA /* UploadPost */ = {
 			isa = PBXGroup;
 			children = (
+				1E4CD6522AAE0C5900404307 /* UploadPostView.swift */,
+				1E4CD6572AAE121300404307 /* PhotoPicker.swift */,
+				1E4CD6592AAE185E00404307 /* NewPostView.swift */,
 			);
 			path = UploadPost;
 			sourceTree = "<group>";
@@ -320,6 +331,7 @@
 			name = Shunkan;
 			packageProductDependencies = (
 				1E0791092AA7684100F7A79C /* SDWebImageSwiftUI */,
+				1E4CD6552AAE112700404307 /* YPImagePicker */,
 			);
 			productName = Shunkan;
 			productReference = 1E0532522AA4CE06005409BA /* Shunkan.app */;
@@ -351,6 +363,7 @@
 			mainGroup = 1E0532492AA4CE06005409BA;
 			packageReferences = (
 				1E0791082AA7684100F7A79C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				1E4CD6542AAE112700404307 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = 1E0532532AA4CE06005409BA /* Products */;
 			projectDirPath = "";
@@ -387,6 +400,7 @@
 				1E0791072AA764C600F7A79C /* Layout1.swift in Sources */,
 				1E7A87F72AA5AC8C00F595E7 /* Highlights.swift in Sources */,
 				1EF037CA2AA5FBE300032D43 /* HeaderTabBar.swift in Sources */,
+				1E4CD6532AAE0C5900404307 /* UploadPostView.swift in Sources */,
 				1E3CE20F2AABA7C300BCC3F8 /* Highlight.swift in Sources */,
 				1EDA96712AA6F8CD0073C4C0 /* FeedCell.swift in Sources */,
 				1E0532562AA4CE06005409BA /* ShunkanApp.swift in Sources */,
@@ -400,6 +414,7 @@
 				1E0532762AA51895005409BA /* UserStackView.swift in Sources */,
 				1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */,
 				1E3815D42AA87F6E00B5AFA3 /* SignInView.swift in Sources */,
+				1E4CD6582AAE121300404307 /* PhotoPicker.swift in Sources */,
 				1E07910C2AA768ED00F7A79C /* Layout2.swift in Sources */,
 				1E3CE2072AABA4AB00BCC3F8 /* Message.swift in Sources */,
 				1E7A87F92AA5AD0F00F595E7 /* HighlightStory.swift in Sources */,
@@ -415,6 +430,7 @@
 				1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */,
 				1E3CE1FF2AAB8DC500BCC3F8 /* Comment.swift in Sources */,
 				1E7A87FC2AA5C89300F595E7 /* Grids.swift in Sources */,
+				1E4CD65A2AAE185E00404307 /* NewPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +487,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = Yes;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Yes;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -525,6 +543,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = Yes;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Yes;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -625,6 +645,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		1E4CD6542AAE112700404307 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -632,6 +660,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E0791082AA7684100F7A79C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		1E4CD6552AAE112700404307 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E4CD6542AAE112700404307 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

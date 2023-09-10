@@ -1,0 +1,132 @@
+//
+//  NewPostView.swift
+//  Shunkan
+//
+//  Created by Pranav Choudhary on 10/09/23.
+//
+
+import SwiftUI
+
+struct NewPostView: View {
+    let image: UIImage?
+    @State private var caption  = ""
+    @State private var boostPost: Bool = false
+    var body: some View {
+        VStack{
+            // action toolbar
+            HStack{
+                Button {
+                    
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+                Spacer()
+                Text("New Post")
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("Share")
+                }
+            }.padding(.horizontal)
+            // post section
+            HStack(spacing: 8){
+                if let image = self.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                }else{
+                    Image("profile_placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                    
+                }
+                TextField("Write a caption ...", text: $caption,axis: .vertical)
+                    .lineLimit(3)
+            }.padding()
+            Divider()
+            VStack{
+                // tag section
+                HStack{
+                    Text("Tag people")
+                        .font(.subheadline)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .imageScale(.small)
+                }.padding(.horizontal)
+                Divider()
+                // reminder section
+                HStack{
+                    Text("Add reminder")
+                        .font(.subheadline)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .imageScale(.small)
+                }.padding(.horizontal)
+                Divider()
+                // location
+                HStack{
+                    Text("Add location")
+                        .font(.subheadline)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .imageScale(.small)
+                }.padding(.horizontal)
+                Divider()
+                // music
+                VStack{
+                    HStack{
+                        
+                        Text("Add music")
+                            .font(.subheadline)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .imageScale(.small)
+                      
+                    }
+                    ScrollView(.horizontal){
+                        HStack{
+                            Text("\(Image(systemName: "music.note")) Calm down - Selena Gomez.")
+                                .padding(.horizontal,10)
+                                .padding(.vertical,5)
+                                .background(.gray.opacity(0.2))
+                                .cornerRadius(7)
+                            Text("\(Image(systemName: "music.note")) Mi Gente – JBalvin (feat. Beyoncé)") .padding(.horizontal,10)
+                                .padding(.vertical,5)
+                                .background(.gray.opacity(0.2))
+                                .cornerRadius(7)
+                            
+                            Text("\(Image(systemName: "music.note")) Industry Baby – Lil Nas X & Jack Harlow") .padding(.horizontal,10)
+                                .padding(.vertical,5)
+                                .background(.gray.opacity(0.2))
+                                .cornerRadius(7)
+                                
+                        }
+                    }.scrollIndicators(.hidden)
+                }
+                .padding(.horizontal)
+                Divider()
+                // boost post
+                
+                HStack{
+                   
+                    Toggle("Boost post", isOn: $boostPost)
+                   
+                }.padding(.horizontal)
+              
+                Spacer()
+            }
+         
+            
+            
+        }
+    }
+}
+
+struct NewPostView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewPostView(image: nil)
+    }
+}

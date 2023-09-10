@@ -16,6 +16,9 @@ struct MediaPicker: UIViewControllerRepresentable {
         init(_ parent: MediaPicker) {
             self.parent = parent
         }
+        
+        
+        
     }
 
     typealias UIViewControllerType = YPImagePicker
@@ -25,15 +28,15 @@ struct MediaPicker: UIViewControllerRepresentable {
         var config = YPImagePickerConfiguration()
        
         //Common
-        config.shouldSaveNewPicturesToAlbum = true
+        config.shouldSaveNewPicturesToAlbum = false
         config.albumName = "Shunkan"
-        config.showsPhotoFilters = false
-        config.showsCrop = .none
-        config.screens = [.library]
+        config.showsPhotoFilters = true
+        config.showsCrop = .rectangle(ratio: 1)
+        config.screens = [.library,.photo,.video]
         config.startOnScreen = .library
-        config.hidesStatusBar = true
-        config.hidesBottomBar = true
-        
+        config.hidesStatusBar = false
+        config.hidesBottomBar = false
+        config.hidesCancelButton = false
         //library
         config.library.mediaType = .photo
         config.library.maxNumberOfItems = 1

@@ -8,31 +8,34 @@
 import SwiftUI
 import YPImagePicker
 struct UploadPostView: View {
-    @State private var showMediaPicker: Bool = true
-      @State private var image: UIImage? = nil
 
+//    @State private var image: UIImage? = nil
+    @StateObject var viewModel: UploadPostViewModel = UploadPostViewModel()
+    @Binding var tabIndex: Int
     var body: some View {
         NavigationStack{
-            ZStack {
+              
+               
+           
                 Button {
-                    showMediaPicker = true
+                    viewModel.showMediaPicker = true
                 } label: {
-                    //                   Text("Select Picture")
+                  
                 }
-                .sheet(isPresented: $showMediaPicker) {
-                    MediaPicker(image: $image)
+                .sheet(isPresented: .constant(tabIndex == 2)) {
+                    MediaPicker(image: $viewModel.postImage).interactiveDismissDisabled(true)
                     
                 }
-                if let image = self.image {
-                  NewPostView(image: image)
-                }
-            }
+
+            NewPostView(viewModel: viewModel,tabIndex: $tabIndex)
+
+      
         }
     }
 }
 
 struct UploadPostView_Previews: PreviewProvider {
     static var previews: some View {
-        UploadPostView()
+        UploadPostView(tabIndex: .constant(2))
     }
 }

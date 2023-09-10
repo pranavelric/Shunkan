@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct NewPostView: View {
-    let image: UIImage?
+//    let image: UIImage?
     @State private var caption  = ""
     @State private var boostPost: Bool = false
+    @StateObject var viewModel: UploadPostViewModel
+    @Binding var tabIndex: Int
     var body: some View {
         VStack{
             // action toolbar
             HStack{
                 Button {
-                    
+                    caption = ""
+                    viewModel.postImage = nil
+                    tabIndex = 0
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Text("cancel")
                 }
                 Spacer()
                 Text("New Post")
@@ -31,11 +35,13 @@ struct NewPostView: View {
             }.padding(.horizontal)
             // post section
             HStack(spacing: 8){
-                if let image = self.image {
+                if let image = self.viewModel.postImage {
                     Image(uiImage: image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .scaledToFill()
                         .frame(width: 100, height: 100)
+                        .clipped()
                 }else{
                     Image("profile_placeholder")
                         .resizable()
@@ -127,6 +133,6 @@ struct NewPostView: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView(image: nil)
+        NewPostView(viewModel: UploadPostViewModel(),tabIndex: .constant(0))
     }
 }

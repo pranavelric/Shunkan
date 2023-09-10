@@ -37,6 +37,7 @@
 		1E4CD6562AAE112700404307 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1E4CD6552AAE112700404307 /* YPImagePicker */; };
 		1E4CD6582AAE121300404307 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD6572AAE121300404307 /* PhotoPicker.swift */; };
 		1E4CD65A2AAE185E00404307 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD6592AAE185E00404307 /* NewPostView.swift */; };
+		1E4CD65E2AAE318A00404307 /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4CD65D2AAE318A00404307 /* UploadPostViewModel.swift */; };
 		1E5942DE2AA89F9600BCE06E /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */; };
 		1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */; };
 		1E5942E22AA8BF9500BCE06E /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */; };
@@ -83,6 +84,7 @@
 		1E4CD6522AAE0C5900404307 /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
 		1E4CD6572AAE121300404307 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		1E4CD6592AAE185E00404307 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		1E4CD65D2AAE318A00404307 /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
 		1E5942DD2AA89F9600BCE06E /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
 		1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 		1E5942E12AA8BF9500BCE06E /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				1E4CD6522AAE0C5900404307 /* UploadPostView.swift */,
 				1E4CD6572AAE121300404307 /* PhotoPicker.swift */,
 				1E4CD6592AAE185E00404307 /* NewPostView.swift */,
+				1E4CD65D2AAE318A00404307 /* UploadPostViewModel.swift */,
 			);
 			path = UploadPost;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				1EDA96712AA6F8CD0073C4C0 /* FeedCell.swift in Sources */,
 				1E0532562AA4CE06005409BA /* ShunkanApp.swift in Sources */,
 				1EDA966F2AA6F8C60073C4C0 /* FeedView.swift in Sources */,
+				1E4CD65E2AAE318A00404307 /* UploadPostViewModel.swift in Sources */,
 				1E07910E2AA7693A00F7A79C /* Layout3.swift in Sources */,
 				1E0791042AA7646800F7A79C /* SearchView.swift in Sources */,
 				1E5942E22AA8BF9500BCE06E /* CreateUsernameView.swift in Sources */,

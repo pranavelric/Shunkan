@@ -6,26 +6,37 @@
 //
 
 import SwiftUI
-
+import SDWebImageSwiftUI
 struct LazyGrid: View {
     
-    @Binding var gridSize: Int
     private let gridItems: [GridItem] = [
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1)
     ]
 
+    let user: User
+    let posts: [Post]
+    
     
     var body: some View {
         
             LazyVGrid(columns: gridItems,spacing: 1){
-                ForEach(0 ... gridSize, id: \.self){ index in
+                ForEach(posts){ post in
                     
-                    Image("profile_placeholder")
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 )
-                        .scaledToFill()
+                    if ((user.profilePictureURL) != nil){
+                        AnimatedImage(url:   URL(string: post.imageURL) )
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 )
+                            .scaledToFill()
+                        
+                    }else{
+                        Image("profile_placeholder")
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 )
+                            .scaledToFill()
+                    }
+                    
                     
                 }
         }
@@ -36,6 +47,6 @@ struct LazyGrid: View {
 
 struct LazyGrid_Previews: PreviewProvider {
     static var previews: some View {
-        LazyGrid(gridSize: .constant(10))
+        LazyGrid(user: User.MOCK_USERS[0], posts: Post.MOCK_Posts)
     }
 }

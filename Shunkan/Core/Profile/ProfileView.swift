@@ -11,8 +11,11 @@ struct ProfileView: View {
 
              
     let user: User
+    var posts: [Post]{
+        return Post.MOCK_Posts.filter({$0.user?.username == user.username})
+    }
     @State var selectedTab:Int = 0
-    @State var gridSize: Int = 30
+    @State var gridSize: Int = 0
     @State var backButtonVisible: Bool = false
     private let gridItems: [GridItem] = [
         .init(.flexible(),spacing: 1),
@@ -122,7 +125,7 @@ struct ProfileView: View {
                             }
                             //story highlight
                             VStack(alignment: .leading){
-                                Highlights()
+                                Highlights(user: user)
                             }.padding(.horizontal)
                     .padding(.bottom)
                 
@@ -131,8 +134,9 @@ struct ProfileView: View {
                 
                     HeaderTabBar(selectedTab: $selectedTab)
                  let temp = UIScreen.main.bounds.width / 3
-                 let multiplier = CGFloat (gridSize / 3 )
-                   Grids(selectedTab: $selectedTab, gridSize: $gridSize)
+                let multiplier = CGFloat (posts.count / 3 )
+                 
+                Grids(selectedTab: $selectedTab,user: user,posts: posts)
                     .frame(height: ((temp) * ( multiplier )  ) + temp)
 
 

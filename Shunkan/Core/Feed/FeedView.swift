@@ -12,7 +12,11 @@ struct FeedView: View {
     var body: some View {
         NavigationStack {
             ScrollView{
+                
                 LazyVStack(spacing: 24){
+//                    Highlights(user: User.MOCK_USERS[0])
+//                    Divider()
+                    // sort the post according to time, and show only post of followings
                     ForEach(Post.MOCK_Posts){ post in
                         FeedCell(post: post)
                     }
@@ -49,6 +53,8 @@ struct FeedView: View {
                     .foregroundColor(.gray.opacity(0.6))
                 }
                 
+            } .navigationDestination(for: User.self) { user in
+                ProfileView(user: user).navigationBarBackButtonHidden(true)
             }
         }
     }

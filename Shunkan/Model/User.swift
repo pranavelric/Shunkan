@@ -32,7 +32,7 @@ struct User: Identifiable, Hashable ,  Codable{
 extension User{
     static var MOCK_USERS: [User] = [
         
-        .init(id: "1", username: "johndoe",fullName: "John Doe", email: "john@example.com",  profilePictureURL: "https://yt3.ggpht.com/yti/AOXPAcVqqZQjftxmu5EFTsugItxNXkYCXAgx-gG_OjOUdg=s88-c-k-c0x00ffffff-no-rj", bio: "I love photography.", bioLink: "gogoanimehd.io",  stories: [], highlights: [], friends: [], followers: [], following: [], posts: []),
+        .init(id: "1", username: "johndoe",fullName: "John Doe", email: "john@example.com",  profilePictureURL: "https://yt3.ggpht.com/yti/AOXPAcVqqZQjftxmu5EFTsugItxNXkYCXAgx-gG_OjOUdg=s88-c-k-c0x00ffffff-no-rj", bio: "I love photography.", bioLink: "gogoanimehd.io",  stories: [], highlights: Highlight.MOCK_Highlights, friends: [], followers: [], following: [], posts: []),
         
         .init(id: "2", username: "janedoe", fullName: "Jane Doe", email: "jane@example.com",  profilePictureURL: "https://img.freepik.com/premium-photo/japanese-girl-cherry-blossom-tree-landscape-anime-manga-illustration_691560-7776.jpg?w=2000", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: []),
         

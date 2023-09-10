@@ -9,16 +9,17 @@ import SwiftUI
 
 struct Grids: View {
     @Binding var selectedTab:Int
-    @Binding var gridSize: Int
+    let user: User
+    let posts: [Post]
     var body: some View {
         
         
 
 
                 TabView(selection: $selectedTab){
-                    LazyGrid(gridSize: $gridSize).tag(0)
-                    LazyGrid(gridSize: $gridSize).tag(1)
-                    LazyGrid(gridSize: $gridSize).tag(2)
+                    LazyGrid( user: user,posts: posts).tag(0)
+                    LazyGrid(user: user,posts: [Post.MOCK_Posts[0]]).tag(1)
+                    LazyGrid(user: user,posts: posts).tag(2)
                     
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -29,6 +30,6 @@ struct Grids: View {
 
 struct Grids_Previews: PreviewProvider {
     static var previews: some View {
-        Grids(selectedTab: .constant(0),gridSize: .constant(10))
+        Grids(selectedTab: .constant(0),user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
     }
 }

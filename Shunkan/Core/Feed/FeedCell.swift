@@ -13,45 +13,47 @@ struct FeedCell: View {
     var body: some View {
         VStack {
             // profile-pic- username feed-settings button
-            HStack{
-              
-                
-                if ((post.user?.profilePictureURL) != nil){
-                    AnimatedImage(url:   URL(string: post.user?.profilePictureURL ?? "") )
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 30,height: 30)
-                        .clipShape(Circle())
+            NavigationLink (value: post.user, label: {
+                HStack{
                     
-                }else{
-                    Image("profile_placeholder")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 30,height: 30)
-                        .clipShape(Circle())
-                }
-                
-                
-                Text(post.user?.username ?? "")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                if((post.user?.isBlueTickEnabled)  != nil && post.user?.isBlueTickEnabled != false){
-                    Image("bluetick")
-                        .resizable()
-                        .aspectRatio( contentMode: .fill)
-                        .frame(width: 12, height: 12, alignment: .leading)
-                        .opacity(1)
-                }
-                Spacer()
-                
-                Button{
                     
-                } label: {
-                    Image(systemName: "ellipsis").foregroundColor(.gray.opacity(0.6))
-                }
-                
-            }.padding(.horizontal,8)
-            
+                    if ((post.user?.profilePictureURL) != nil){
+                        AnimatedImage(url:   URL(string: post.user?.profilePictureURL ?? "") )
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30,height: 30)
+                            .clipShape(Circle())
+                        
+                    }else{
+                        Image("profile_placeholder")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30,height: 30)
+                            .clipShape(Circle())
+                    }
+                    
+                    
+                    Text(post.user?.username ?? "")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                    if((post.user?.isBlueTickEnabled)  != nil && post.user?.isBlueTickEnabled != false){
+                        Image("bluetick")
+                            .resizable()
+                            .aspectRatio( contentMode: .fill)
+                            .frame(width: 12, height: 12, alignment: .leading)
+                            .opacity(1)
+                    }
+                    Spacer()
+                    
+                    Button{
+                        
+                    } label: {
+                        Image(systemName: "ellipsis").foregroundColor(.gray.opacity(0.6))
+                    }
+                    
+                }.padding(.horizontal,8)
+            })
             // post content
             if ((post.imageURL) != nil){
                 AnimatedImage(url:   URL(string: post.imageURL) )

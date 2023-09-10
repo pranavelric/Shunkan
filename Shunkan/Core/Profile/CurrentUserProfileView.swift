@@ -105,7 +105,7 @@ ScrollView{
               }
               //story highlight
               VStack(alignment: .leading){
-                  Highlights()
+                  Highlights(user: User.MOCK_USERS[0])
               }.padding(.horizontal)
       .padding(.bottom)
   
@@ -114,8 +114,8 @@ ScrollView{
   
       HeaderTabBar(selectedTab: $selectedTab)
    let temp = UIScreen.main.bounds.width / 3
-   let multiplier = CGFloat (gridSize / 3 )
-     Grids(selectedTab: $selectedTab, gridSize: $gridSize)
+   let multiplier = CGFloat (3 / 3 ) // change it
+    Grids(selectedTab: $selectedTab, user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
       .frame(height: ((temp) * ( multiplier )  ) + temp)
 
 

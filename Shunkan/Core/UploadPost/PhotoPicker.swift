@@ -57,6 +57,7 @@ struct MediaPicker: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: YPImagePicker, context: Context) {
+        
     }
     
     func makeCoordinator() -> Coordinator {

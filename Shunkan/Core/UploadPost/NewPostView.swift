@@ -12,6 +12,7 @@ struct NewPostView: View {
     @State private var caption  = ""
     @State private var boostPost: Bool = false
     @StateObject var viewModel: UploadPostViewModel
+    @State var displaySheet: Bool = false
     @Binding var tabIndex: Int
     var body: some View {
         VStack{
@@ -21,6 +22,7 @@ struct NewPostView: View {
                     caption = ""
                     viewModel.postImage = nil
                     tabIndex = 0
+                   
                 } label: {
                     Text("cancel")
                 }
@@ -43,10 +45,14 @@ struct NewPostView: View {
                         .frame(width: 100, height: 100)
                         .clipped()
                 }else{
-                    Image("profile_placeholder")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
+            
+                        Image("profile_placeholder")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipped()
+                
                     
                 }
                 TextField("Write a caption ...", text: $caption,axis: .vertical)

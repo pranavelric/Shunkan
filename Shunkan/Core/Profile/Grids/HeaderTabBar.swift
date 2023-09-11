@@ -28,7 +28,7 @@ struct HeaderTabBar: View {
                     selectedTab = 2
                 }
                 
-            }.frame( height: 45,alignment: .bottom)
+            }.frame( height: 55,alignment: .bottom)
                 .padding(0)
         )
         

@@ -18,7 +18,7 @@ struct UploadPostView: View {
                
            
                 Button {
-                    viewModel.showMediaPicker = true
+                 
                 } label: {
                   
                 }

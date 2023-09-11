@@ -21,7 +21,7 @@ struct MainTabView: View {
                 .tabItem {
                 Image(systemName: "house")
                 }.tag(0)
-            SearchView()
+            SearchView(post: Post.MOCK_Posts)
                 .onAppear{
                     selectedIndex = 1
                 }

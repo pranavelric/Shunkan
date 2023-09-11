@@ -24,22 +24,27 @@ struct LazyGrid: View {
             LazyVGrid(columns: gridItems,spacing: 1){
                 ForEach(posts){ post in
                     
-                    if ((user.profilePictureURL) != nil){
+                    if ((post.imageURL) != nil){
                         AnimatedImage(url:   URL(string: post.imageURL) )
                             .resizable()
-                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 )
+                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3,alignment: .top )
+//                            .frame(height: .infinity,alignment: .top)
                             .scaledToFill()
+                            .clipped()
+                        
                         
                     }else{
                         Image("profile_placeholder")
                             .resizable()
-                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 )
+                            .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3)
                             .scaledToFill()
                     }
                     
                     
                 }
-        }
+            }
+            .frame(height: UIScreen.main.bounds.height,alignment: .top)
+            
           
             
     }
@@ -47,6 +52,6 @@ struct LazyGrid: View {
 
 struct LazyGrid_Previews: PreviewProvider {
     static var previews: some View {
-        LazyGrid(user: User.MOCK_USERS[0], posts: Post.MOCK_Posts)
+        LazyGrid(user: User.MOCK_USERS[0], posts: [Post.MOCK_Posts[0]])
     }
 }

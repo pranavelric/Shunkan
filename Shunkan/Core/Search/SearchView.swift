@@ -10,8 +10,9 @@ import SDWebImageSwiftUI
 struct SearchView: View {
     @State var search: String = ""
     @State var text: String = ""
-  
-    
+    @State private var offset: Int = 0
+    let post: [Post]
+    @StateObject var viewModel = SearchFeedViewModel()
     var body: some View {
         NavigationStack{
             VStack{
@@ -20,26 +21,31 @@ struct SearchView: View {
 
              
                                   
-                                if false{
+                if viewModel.post.isEmpty {
                                     ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
                                 }else{
                                     ScrollView{
                                         VStack(spacing: 4){
-                                            ForEach(0 ... 10,id: \.self){ index in
-                
-                
-                                                if index == 0 || index % 6 == 0 {
-                                                    Layout1()
-                                                }else if index % 3 == 0{
-                                                    Layout3()
-                                                }else{
-                //                                    Layout2(cards: viewModel.compositionalArray[index])
-                                                    Layout2()
-                                                }
-                
-                
+                                            ForEach(viewModel.compositionalArray.indices,id: \.self){index in
+
+                                             // Check if offset is within bounds
+                                                    if index == 0 || index % 6 == 0 {
+                                                        Layout1(posts: viewModel.compositionalArray[index])
+
+
+                                                    } else if index % 3 == 0 {
+                                                      
+                                                        Layout3(posts: viewModel.compositionalArray[index])
+
+                                                    } else {
+                                                      
+                                                        Layout2(posts: viewModel.compositionalArray[index])
+
+                                                    }
+
+
                                             }
-                
+                                            
                                         }
                                     }
                                 }
@@ -76,6 +82,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(post: Post.MOCK_Posts)
     }
 }

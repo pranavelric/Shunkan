@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CreatePasswordView: View {
-    @State private var password:String = ""
+
     @State var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegistrationViewModel
     var body: some View {
         VStack{
             Text("Create a password")
@@ -30,12 +31,12 @@ struct CreatePasswordView: View {
             ZStack(alignment: .trailing) {
                         Group {
                             if isSecure {
-                                SecureField("Enter your password", text: $password)
+                                SecureField("Enter your password", text: $viewModel.password)
                                     .autocapitalization(.none)
                                     .modifier(TextFieldModifier())
 
                             } else {
-                               TextField("Enter your password", text: $password)
+                                TextField("Enter your password", text: $viewModel.password)
                                     .autocapitalization(.none)
                                     .modifier(TextFieldModifier())
 

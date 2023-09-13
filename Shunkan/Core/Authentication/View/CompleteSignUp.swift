@@ -1,36 +1,40 @@
 //
-//  CreateUsernameView.swift
+//  CompleteSignUp.swift
 //  Shunkan
 //
-//  Created by Pranav Choudhary on 06/09/23.
+//  Created by Pranav Choudhary on 07/09/23.
 //
 
 import SwiftUI
 
-struct CreateUsernameView: View {
-    @State private var username:String = ""
+struct CompleteSignUp: View {
+    @State private var password:String = ""
+    @State var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegistrationViewModel
     var body: some View {
         VStack{
-            Text("Create username")
+            Spacer()
+            Text("Welcome to Shunkan, \(viewModel.username)")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text("Pick a username for your new account. You can always change it later")
+            Text("Click blow to complete registration and start using Shunkan")
                 .font(.footnote)
-                .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.top,1)
                 .padding(.bottom,10)
                 .padding(.horizontal,24)
-            TextField("Username", text: $username)
-                .autocapitalization(.none)
-                .modifier(TextFieldModifier())
+
             
-            NavigationLink{
-                CreatePasswordView().navigationBarBackButtonHidden(true)
+  
+            
+            Button{
+                Task{
+                    try await viewModel.createUser()
+                }
             } label: {
-                Text("Next")
+                Text("Complete Sign Up")
                          .font(.subheadline)
                          .fontWeight(.semibold)
                          .foregroundColor(.white)
@@ -55,8 +59,8 @@ struct CreateUsernameView: View {
     }
 }
 
-struct CreateUsernameView_Previews: PreviewProvider {
+struct CompleteSignUp_Previews: PreviewProvider {
     static var previews: some View {
-        CreateUsernameView()
+        CompleteSignUp()
     }
 }

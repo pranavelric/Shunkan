@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCekr_PcrVB-YzlBZ9MRSGHTFUV2C_aFjs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>559413892135</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>elric.Shunkan</string>
+	<key>PROJECT_ID</key>
+	<string>shunkan-9108b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>shunkan-9108b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:559413892135:ios:3802072c158c778aca6a02</string>
+</dict>
+</plist>

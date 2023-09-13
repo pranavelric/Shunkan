@@ -133,9 +133,9 @@ struct ProfileView: View {
                     
                     // post grid
                         HeaderTabBar(selectedTab: $selectedTab)
-                        let temp = UIScreen.main.bounds.width / 3
-                        let tempHeight =  UIScreen.main.bounds.height
-                        let multiplier = CGFloat (posts.count / 3 )
+//                        let temp = UIScreen.main.bounds.width / 3
+//                        let tempHeight =  UIScreen.main.bounds.height
+//                        let multiplier = CGFloat (posts.count / 3 )
                         
                         Grids(selectedTab: $selectedTab,user: user,posts: posts)
 //                            .frame(height: ((temp) * ( multiplier  )  ) + temp,alignment: .bottom)

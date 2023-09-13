@@ -1,37 +1,36 @@
 //
-//  CompleteSignUp.swift
+//  CreateUsernameView.swift
 //  Shunkan
 //
-//  Created by Pranav Choudhary on 07/09/23.
+//  Created by Pranav Choudhary on 06/09/23.
 //
 
 import SwiftUI
 
-struct CompleteSignUp: View {
-    @State private var password:String = ""
-    @State var isSecure: Bool = true
+struct CreateUsernameView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegistrationViewModel
     var body: some View {
         VStack{
-            Spacer()
-            Text("Welcome to Shunkan, Pranav Elric")
+            Text("Create username")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text("Click blow to complete registration and start using Shunkan")
+            Text("Pick a username for your new account. You can always change it later")
                 .font(.footnote)
+                .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.top,1)
                 .padding(.bottom,10)
                 .padding(.horizontal,24)
-
+            TextField("Username", text: $viewModel.username)
+                .autocapitalization(.none)
+                .modifier(TextFieldModifier())
             
-  
-            
-            Button{
-                
+            NavigationLink{
+                CreatePasswordView().navigationBarBackButtonHidden(true)
             } label: {
-                Text("Complete Sign Up")
+                Text("Next")
                          .font(.subheadline)
                          .fontWeight(.semibold)
                          .foregroundColor(.white)
@@ -56,8 +55,8 @@ struct CompleteSignUp: View {
     }
 }
 
-struct CompleteSignUp_Previews: PreviewProvider {
+struct CreateUsernameView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteSignUp()
+        CreateUsernameView()
     }
 }

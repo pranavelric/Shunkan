@@ -14,13 +14,14 @@ struct LazyGrid: View {
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1)
     ]
-
     let user: User
     let posts: [Post]
     
     
     var body: some View {
         
+//        ScrollView{
+       
             LazyVGrid(columns: gridItems,spacing: 1){
                 ForEach(posts){ post in
                     
@@ -28,7 +29,6 @@ struct LazyGrid: View {
                         AnimatedImage(url:   URL(string: post.imageURL) )
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3,alignment: .top )
-//                            .frame(height: .infinity,alignment: .top)
                             .scaledToFill()
                             .clipped()
                         
@@ -42,9 +42,12 @@ struct LazyGrid: View {
                     
                     
                 }
+                       
+                
             }
             .frame(height: UIScreen.main.bounds.height,alignment: .top)
-            
+        
+//        }
           
             
     }

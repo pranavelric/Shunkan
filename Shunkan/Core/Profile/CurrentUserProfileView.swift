@@ -111,14 +111,18 @@ ScrollView{
   
   
   // post grid
-  
-      HeaderTabBar(selectedTab: $selectedTab)
-   let temp = UIScreen.main.bounds.width / 3
-   let multiplier = CGFloat (3 / 3 ) // change it
-    Grids(selectedTab: $selectedTab, user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
-      .frame(height: ((temp) * ( multiplier )  ) + temp)
+    let height = UIScreen.main.bounds.width / 3
+    let multiplier = Double(Post.MOCK_Posts.count) / 3 + 2
+    let min_height = height * multiplier
+    VStack{
+        HeaderTabBar(selectedTab: $selectedTab)
 
-
+        Grids(selectedTab: $selectedTab, user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
+            .frame(alignment: .top)
+            .padding(.top,-200)
+            .zIndex(-1.0)  
+    }
+    .frame(minHeight: CGFloat(min_height) ,alignment: .top)
 }
 .toolbar{
 

@@ -31,6 +31,9 @@ struct CompleteSignUp: View {
             
             Button{
                 Task{
+                    ProgressView() {
+                        Text("Loading...")
+                    }
                     try await viewModel.createUser()
                 }
             } label: {

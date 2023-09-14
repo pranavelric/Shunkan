@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import SwiftUI
 
 class AuthSerivce{
     
@@ -23,6 +24,7 @@ class AuthSerivce{
     
     func createUser(email:String,password:String,username:String) async throws{
         do{
+           
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
         }

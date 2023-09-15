@@ -12,6 +12,9 @@ struct CurrentUserProfileView: View {
 @State var selectedTab:Int = 0
 @State var gridSize: Int = 30
 @State var backButtonVisible: Bool = false
+@State var createSheetToggle: Bool = false
+@State var settingsSheetToggle: Bool = false
+
 private let gridItems: [GridItem] = [
 .init(.flexible(),spacing: 1),
 .init(.flexible(),spacing: 1),
@@ -154,14 +157,18 @@ ScrollView{
       
       HStack{
           Button{
-              
+              createSheetToggle.toggle()
           } label: {
               Image(systemName: "plus.square.fill").foregroundColor(.gray.opacity(0.6))
           }
           Button{
-              
+              settingsSheetToggle.toggle()
           } label: {
               Image(systemName: "line.3.horizontal").foregroundColor(.gray.opacity(0.6))
+          }.sheet(isPresented: $settingsSheetToggle){
+              SettingSheets() .presentationDetents([ .medium])
+                  .presentationDragIndicator(.visible)
+                  .presentationCornerRadius(20)
           }
       }
   }

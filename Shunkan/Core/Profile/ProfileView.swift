@@ -88,7 +88,7 @@ struct ProfileView: View {
                             Button{
                                 
                             } label:{
-                                Text("Edit Profile")
+                                Text("Follow")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.black.opacity(0.7))

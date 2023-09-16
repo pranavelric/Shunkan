@@ -11,6 +11,7 @@ struct SignInView: View {
     @State private var email:String = ""
     @State private var password:String = ""
     @State var isSecure: Bool = true
+    @StateObject var viewModel: LoginViewModel = LoginViewModel()
     @Environment(\.dismiss) var dismiss
     var body: some View {
             VStack{
@@ -23,7 +24,7 @@ struct SignInView: View {
                 
                 // text fields
                 VStack{
-                    TextField("Enter your email", text: $email)
+                    TextField("Enter your email", text: $viewModel.email)
                         .autocapitalization(.none)
                         .modifier(TextFieldModifier())
 
@@ -31,12 +32,12 @@ struct SignInView: View {
                     ZStack(alignment: .trailing) {
                                 Group {
                                     if isSecure {
-                                        SecureField("Enter your password", text: $password)
+                                        SecureField("Enter your password", text: $viewModel.password)
                                             .autocapitalization(.none)
                                             .modifier(TextFieldModifier())
 
                                     } else {
-                                       TextField("Enter your password", text: $password)
+                                        TextField("Enter your password", text: $viewModel.password)
                                             .autocapitalization(.none)
                                             .modifier(TextFieldModifier())
 
@@ -64,7 +65,13 @@ struct SignInView: View {
                 }.frame(maxWidth: .infinity,alignment: .trailing)
                 
                 Button{
-                    print("login")
+                    Task{
+                        ProgressView() {
+                            Text("Loading...")
+                        }
+                        try await viewModel.signIn()
+                    }
+                  
                 } label: {
                     Text("Login")
                         .font(.subheadline)

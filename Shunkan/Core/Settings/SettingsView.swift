@@ -18,7 +18,7 @@ struct SettingsView: View {
             
          
                 Button{
-                    
+                    AuthSerivce.shared.signOut()
                 } label: {
                     HStack{
                         Text("Log out")

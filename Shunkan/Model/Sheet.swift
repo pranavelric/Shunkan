@@ -62,26 +62,26 @@ extension Sheet{
         .init(id: "18", itemName: "Hidden Words", imageName: "textformat", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
         .init(id: "19", itemName: "Follow and invite friends", imageName: "person.badge.plus", subtitle: nil ,heading: nil, info: nil, dividerSize: 5),
        
-            .init(id: "19", itemName: "Archiving and downloading", imageName: "arrow.down.to.line", subtitle: nil ,heading: "Your app and media", info: nil, dividerSize: nil),
-            .init(id: "20", itemName: "Accessibility", imageName: "person.crop.circle.badge.checkmark", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
-            .init(id: "21", itemName: "Language", imageName: "signature", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
-            .init(id: "22", itemName: "Data usage", imageName: "icloud.and.arrow.down.fill", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
-            .init(id: "23", itemName: "Website permissions", imageName: "gear", subtitle: nil ,heading: nil, info: nil, dividerSize: 5),
+            .init(id: "20", itemName: "Archiving and downloading", imageName: "arrow.down.to.line", subtitle: nil ,heading: "Your app and media", info: nil, dividerSize: nil),
+            .init(id: "21", itemName: "Accessibility", imageName: "person.crop.circle.badge.checkmark", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
+            .init(id: "22", itemName: "Language", imageName: "signature", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
+            .init(id: "23", itemName: "Data usage", imageName: "icloud.and.arrow.down.fill", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
+            .init(id: "24", itemName: "Website permissions", imageName: "gear", subtitle: nil ,heading: nil, info: nil, dividerSize: 5),
         
         
         
-            .init(id: "24", itemName: "Supervision", imageName: "person.2", subtitle: nil ,heading: "For families", info: nil, dividerSize: 5),
+            .init(id: "25", itemName: "Supervision", imageName: "person.2", subtitle: nil ,heading: "For families", info: nil, dividerSize: 5),
         
         
-            .init(id: "25", itemName: "Account type and tools", imageName: "hammer", subtitle: nil ,heading: "For professionals", info: nil, dividerSize: 5),
+            .init(id: "26", itemName: "Account type and tools", imageName: "hammer", subtitle: nil ,heading: "For professionals", info: nil, dividerSize: 5),
         
         
-        .init(id: "26", itemName: "Orders and payment", imageName: "cube.box", subtitle: nil ,heading: "Your orders and fundraisers", info: nil, dividerSize: 5),
+        .init(id: "27", itemName: "Orders and payment", imageName: "cube.box", subtitle: nil ,heading: "Your orders and fundraisers", info: nil, dividerSize: 5),
         
         
-        .init(id: "27", itemName: "Help", imageName: "helm", subtitle: nil ,heading: "More info and support", info: nil, dividerSize: nil),
-        .init(id: "28", itemName: "Account status", imageName: "person", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
-        .init(id: "29", itemName: "About", imageName: "info.circle", subtitle: nil ,heading: nil, info: nil, dividerSize: 8),
+        .init(id: "28", itemName: "Help", imageName: "helm", subtitle: nil ,heading: "More info and support", info: nil, dividerSize: nil),
+        .init(id: "29", itemName: "Account status", imageName: "person", subtitle: nil ,heading: nil, info: nil, dividerSize: nil),
+        .init(id: "30", itemName: "About", imageName: "info.circle", subtitle: nil ,heading: nil, info: nil, dividerSize: 8),
         
   
     ]

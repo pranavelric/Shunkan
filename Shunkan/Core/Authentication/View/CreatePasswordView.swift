@@ -12,6 +12,8 @@ struct CreatePasswordView: View {
     @State var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: RegistrationViewModel
+    @State private var isShowingAlert = false
+    @State private var shouldNavigate = false
     var body: some View {
         VStack{
             Text("Create a password")
@@ -51,18 +53,46 @@ struct CreatePasswordView: View {
                        
                     }
             
-            NavigationLink{
-                CompleteSignUp().navigationBarBackButtonHidden(true)
-            } label: {
-                Text("Next")
-                         .font(.subheadline)
-                         .fontWeight(.semibold)
-                         .foregroundColor(.white)
-                         .frame(width: 380,height: 44)
-                         .background(.pink)
-                         .cornerRadius(10)
-            }.padding(.vertical)
+//            NavigationLink{
+//                CompleteSignUp().navigationBarBackButtonHidden(true)
+//            } label: {
+//                Text("Next")
+//                         .font(.subheadline)
+//                         .fontWeight(.semibold)
+//                         .foregroundColor(.white)
+//                         .frame(width: 380,height: 44)
+//                         .background(.pink)
+//                         .cornerRadius(10)
+//            }.padding(.vertical)
 
+            
+            Button(action: {
+                           if viewModel.password.isEmpty {
+                               isShowingAlert = true
+                           } else {
+                               shouldNavigate = true
+                           }
+                       }) {
+                           Text("Next")
+                               .font(.subheadline)
+                               .fontWeight(.semibold)
+                               .foregroundColor(.white)
+                               .frame(width: 380, height: 44)
+                               .background(.pink)
+                               .cornerRadius(10)
+                       }
+                       .padding(.vertical)
+                       .alert(isPresented: $isShowingAlert) {
+                           Alert(title: Text("Password is empty"), message: Text("Please enter your password."), dismissButton: .default(Text("OK")))
+                       }
+                       .background(
+                           NavigationLink(
+                               destination:  CompleteSignUp().navigationBarBackButtonHidden(true),
+                               isActive: $shouldNavigate,
+                               label: { EmptyView() }
+                           )
+                       )
+            
             
 
             Spacer()

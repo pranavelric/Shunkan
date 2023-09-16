@@ -10,6 +10,8 @@ import SwiftUI
 struct CreateUsernameView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: RegistrationViewModel
+    @State private var isShowingAlert = false
+    @State private var shouldNavigate = false
     var body: some View {
         VStack{
             Text("Create username")
@@ -27,18 +29,52 @@ struct CreateUsernameView: View {
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
             
-            NavigationLink{
-                CreatePasswordView().navigationBarBackButtonHidden(true)
-            } label: {
-                Text("Next")
-                         .font(.subheadline)
-                         .fontWeight(.semibold)
-                         .foregroundColor(.white)
-                         .frame(width: 380,height: 44)
-                         .background(.pink)
-                         .cornerRadius(10)
-            }.padding(.vertical)
+//            NavigationLink{
+//                CreatePasswordView().navigationBarBackButtonHidden(true)
+//            } label: {
+//                Text("Next")
+//                         .font(.subheadline)
+//                         .fontWeight(.semibold)
+//                         .foregroundColor(.white)
+//                         .frame(width: 380,height: 44)
+//                         .background(.pink)
+//                         .cornerRadius(10)
+//            }.padding(.vertical)
 
+            
+            
+            Button(action: {
+                           if viewModel.username.isEmpty {
+                               isShowingAlert = true
+                           } else {
+                               shouldNavigate = true
+                           }
+                       }) {
+                           Text("Next")
+                               .font(.subheadline)
+                               .fontWeight(.semibold)
+                               .foregroundColor(.white)
+                               .frame(width: 380, height: 44)
+                               .background(.pink)
+                               .cornerRadius(10)
+                       }
+                       .padding(.vertical)
+                       .alert(isPresented: $isShowingAlert) {
+                           Alert(title: Text("Username is empty"), message: Text("Please enter your username."), dismissButton: .default(Text("OK")))
+                       }
+                       .background(
+                           NavigationLink(
+                               destination:  CreatePasswordView().navigationBarBackButtonHidden(true),
+                               isActive: $shouldNavigate,
+                               label: { EmptyView() }
+                           )
+                       )
+            
+            
+            
+            
+            
+            
             
 
             Spacer()

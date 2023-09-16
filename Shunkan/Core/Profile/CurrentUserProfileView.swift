@@ -166,7 +166,7 @@ ScrollView{
           } label: {
               Image(systemName: "line.3.horizontal").foregroundColor(.gray.opacity(0.6))
           }.sheet(isPresented: $settingsSheetToggle){
-              SettingSheets() .presentationDetents([ .medium])
+              SettingSheets() .presentationDetents([ .medium, .large])
                   .presentationDragIndicator(.visible)
                   .presentationCornerRadius(20)
           }

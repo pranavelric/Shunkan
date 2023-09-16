@@ -26,6 +26,7 @@ struct SettingSheets: View {
                 
             }.listStyle(.plain)
                 .listRowSeparator(.hidden)
+                .padding(.vertical)
                 
         }
     }

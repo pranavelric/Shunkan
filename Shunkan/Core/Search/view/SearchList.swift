@@ -9,15 +9,25 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct SearchList: View {
-    @State private var searchableText = ""
+    let searchableText:String
+    let users: [User]
     var body: some View {
         NavigationStack{
             ScrollView{
                 LazyVStack(spacing:12) {
-                    ForEach(User.MOCK_USERS){ user in
+                    ForEach(users.filter { user in
+                        if searchableText.isEmpty {
+                            return true  // Show all users when the search text is empty
+                        } else {
+//                            return user.username.localizedCaseInsensitiveContains(searchableText)
+                            let searchTextLowercased = searchableText.lowercased()
+                            return user.username.localizedCaseInsensitiveContains(searchTextLowercased) ||
+                                         (user.fullName?.localizedCaseInsensitiveContains(searchTextLowercased) ?? false)
+                        }
+                    }){ user in
                         NavigationLink (value: user, label: {
                             HStack{
-                                
+                               
                                 
                                 if ((user.profilePictureURL) != nil){
                                     AnimatedImage(url:   URL(string: user.profilePictureURL ?? "") )
@@ -53,6 +63,7 @@ struct SearchList: View {
                         })
                     }
                 }.padding(.top,8)
+          
 //                    .searchable(text: $searchableText, prompt: "Search...")
             }
             .navigationDestination(for: User.self) { user in
@@ -64,6 +75,6 @@ struct SearchList: View {
 
 struct SearchList_Previews: PreviewProvider {
     static var previews: some View {
-        SearchList()
+        SearchList(searchableText: "Test",users: User.MOCK_USERS)
     }
 }

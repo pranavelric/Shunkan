@@ -57,6 +57,7 @@
 		1E994CC72AACFD890063DA4A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC62AACFD890063DA4A /* Date.swift */; };
 		1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */; };
 		1EA9203B2AB751DA008EFF17 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1EA9203A2AB751DA008EFF17 /* FirebaseFirestoreSwift */; };
+		1EA9203D2AB793F1008EFF17 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9203C2AB793F1008EFF17 /* UserService.swift */; };
 		1EAE8FB02AB634AE006A3A74 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE8FAF2AB634AE006A3A74 /* String.swift */; };
 		1ECD70D52AB04414003F939F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD70D42AB04414003F939F /* AuthService.swift */; };
 		1ECD70D82AB04522003F939F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1ECD70D72AB04522003F939F /* FirebaseAuth */; };
@@ -121,6 +122,7 @@
 		1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileView.swift; sourceTree = "<group>"; };
 		1E994CC62AACFD890063DA4A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUp.swift; sourceTree = "<group>"; };
+		1EA9203C2AB793F1008EFF17 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		1EAE8FAF2AB634AE006A3A74 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1ECD70D42AB04414003F939F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1ECD70E12AB0460D003F939F /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		1E0532542AA4CE06005409BA /* Shunkan */ = {
 			isa = PBXGroup;
 			children = (
+				1EA9203E2AB793FE008EFF17 /* Service */,
 				1E0AB7232AB42034004D825B /* utils */,
 				1E89961A2AAF51EC00907224 /* ViewModel */,
 				1E0532682AA4CE6F005409BA /* Services */,
@@ -292,10 +295,9 @@
 		1E05326D2AA4CE9E005409BA /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				1EA920402AB7950B008EFF17 /* viewModel */,
+				1EA9203F2AB79506008EFF17 /* view */,
 				1E0791052AA764BA00F7A79C /* CompositionalLayout */,
-				1E0791032AA7646800F7A79C /* SearchView.swift */,
-				1E07910F2AA76E7E00F7A79C /* SearchBar.swift */,
-				1E3815CF2AA84CFF00B5AFA3 /* SearchList.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -378,9 +380,34 @@
 		1E89961A2AAF51EC00907224 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1E89961B2AAF51FE00907224 /* SearchFeed.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1EA9203E2AB793FE008EFF17 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1EA9203C2AB793F1008EFF17 /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1EA9203F2AB79506008EFF17 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1E07910F2AA76E7E00F7A79C /* SearchBar.swift */,
+				1E3815CF2AA84CFF00B5AFA3 /* SearchList.swift */,
+				1E0791032AA7646800F7A79C /* SearchView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		1EA920402AB7950B008EFF17 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E89961B2AAF51FE00907224 /* SearchFeed.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		1ECD70D22AB043EC003F939F /* View */ = {
@@ -532,6 +559,7 @@
 			files = (
 				1E3CE1FD2AAB727E00BCC3F8 /* User.swift in Sources */,
 				1E0532732AA4E132005409BA /* ProfileView.swift in Sources */,
+				1EA9203D2AB793F1008EFF17 /* UserService.swift in Sources */,
 				1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */,
 				1E3CE20D2AABA7A800BCC3F8 /* Story.swift in Sources */,
 				1E0532582AA4CE06005409BA /* ContentView.swift in Sources */,

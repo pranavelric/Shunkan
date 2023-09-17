@@ -65,6 +65,7 @@ struct SearchView: View {
                                     .placeholder: "Search",
                                     .showsBookmarkButton: true,
                                  ],
+                                 
                                  actions: [
                                     .onCancelButtonClicked: {
                                         print("Cancel")
@@ -73,7 +74,8 @@ struct SearchView: View {
                                         print("Search")
                                     }
                                  ], searchResultsContent: {
-                                  SearchList()
+                                     SearchList(searchableText: text,users: viewModel.users)
+                                     
 
                                  })
         }

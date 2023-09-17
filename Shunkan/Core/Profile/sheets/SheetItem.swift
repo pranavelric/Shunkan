@@ -21,8 +21,7 @@ struct SheetItem: View {
                 Label("\(itemName)", systemImage: imageName).padding(.horizontal)
             }.frame(width: UIScreen.main.bounds.width,alignment: .leading)
                 .foregroundColor(.black)
-                
-            Divider()
+
              
         }
     }

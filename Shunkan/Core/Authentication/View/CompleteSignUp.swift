@@ -43,9 +43,7 @@ struct CompleteSignUp: View {
 
                           // Perform the task (creating a user in this case)
                           do {
-                              viewModel.email    = ""
-                              viewModel.username = ""
-                              viewModel.password = ""
+                              
                               try await viewModel.createUser()
                           } catch {
                               // Handle any errors that occur during user creation
@@ -75,6 +73,11 @@ struct CompleteSignUp: View {
                 .alert(isPresented: $showError){
                     Alert(title: Text("Failed to register user"), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK"), action: {
                         shouldNavigate = true
+                        
+//                        viewModel.email    = ""
+//                        viewModel.username = ""
+//                        viewModel.password = ""
+                        
                     } ))
                 }.background(
                     NavigationLink(

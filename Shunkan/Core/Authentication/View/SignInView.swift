@@ -11,6 +11,9 @@ struct SignInView: View {
     @State private var email:String = ""
     @State private var password:String = ""
     @State var isSecure: Bool = true
+    @State var showError = false
+    @State var errorMsg: String? = nil
+    @State var shouldNavigate: Bool = false
     @StateObject var viewModel: LoginViewModel = LoginViewModel()
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -66,21 +69,52 @@ struct SignInView: View {
                 
                 Button{
                     Task{
-                        ProgressView() {
-                            Text("Loading...")
-                        }
+                        
+                        
+                        // Show the ProgressView
+                              withAnimation {
+                                  viewModel.isLogginIn = true
+                              }
+
+                              // Perform the task (creating a user in this case)
+                              do {
+                                  try await viewModel.signIn()
+                                  viewModel.email    = ""
+                                  viewModel.password = ""
+                              } catch {
+                                  // Handle any errors that occur during user creation
+                                  showError = true
+                                  errorMsg = error.localizedDescription
+                                  print("Error creating user: \(error)")
+                              }
+
+                              // Hide the ProgressView after the task is completed
+                              withAnimation {
+                                  viewModel.isLogginIn = false
+                              }
+                        
+                        
+                     
                         try await viewModel.signIn()
                     }
                   
                 } label: {
-                    Text("Login")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(width: 380,height: 44)
-                        .background(Color(.systemPink))
-                        .cornerRadius(8)
+                    
+                    if viewModel.isLogginIn {
+                                       ProgressView("Loading...")
+                    } else {
+                        Text("Login")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 380,height: 44)
+                            .background(Color(.systemPink))
+                            .cornerRadius(8)
+                    }
                 }.padding(.vertical)
+                    .alert(isPresented: $showError){
+                        Alert(title: Text("Failed to SignIn"), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK")))
+                    }
                 
                 
                 HStack{

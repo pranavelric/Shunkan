@@ -56,6 +56,7 @@
 		1E994CC42AACA4D40063DA4A /* CurrentUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */; };
 		1E994CC72AACFD890063DA4A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC62AACFD890063DA4A /* Date.swift */; };
 		1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */; };
+		1EA9203B2AB751DA008EFF17 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1EA9203A2AB751DA008EFF17 /* FirebaseFirestoreSwift */; };
 		1EAE8FB02AB634AE006A3A74 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE8FAF2AB634AE006A3A74 /* String.swift */; };
 		1ECD70D52AB04414003F939F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD70D42AB04414003F939F /* AuthService.swift */; };
 		1ECD70D82AB04522003F939F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1ECD70D72AB04522003F939F /* FirebaseAuth */; };
@@ -139,6 +140,7 @@
 				1ECD70DE2AB04544003F939F /* FirebaseAnalyticsSwift in Frameworks */,
 				1E07910A2AA7684100F7A79C /* SDWebImageSwiftUI in Frameworks */,
 				1ECD70DA2AB0452A003F939F /* FirebaseFirestore in Frameworks */,
+				1EA9203B2AB751DA008EFF17 /* FirebaseFirestoreSwift in Frameworks */,
 				1ECD70D82AB04522003F939F /* FirebaseAuth in Frameworks */,
 				1ECD70DC2AB04537003F939F /* FirebaseStorage in Frameworks */,
 				1E4CD6562AAE112700404307 /* YPImagePicker in Frameworks */,
@@ -466,6 +468,7 @@
 				1ECD70D92AB0452A003F939F /* FirebaseFirestore */,
 				1ECD70DB2AB04537003F939F /* FirebaseStorage */,
 				1ECD70DD2AB04544003F939F /* FirebaseAnalyticsSwift */,
+				1EA9203A2AB751DA008EFF17 /* FirebaseFirestoreSwift */,
 			);
 			productName = Shunkan;
 			productReference = 1E0532522AA4CE06005409BA /* Shunkan.app */;
@@ -822,6 +825,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E4CD6542AAE112700404307 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
 			productName = YPImagePicker;
+		};
+		1EA9203A2AB751DA008EFF17 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E8996222AAF9C1500907224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 		1ECD70D72AB04522003F939F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

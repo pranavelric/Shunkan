@@ -10,7 +10,7 @@ class LoginViewModel: ObservableObject{
     
     @Published var email    = ""
     @Published var password = ""
-    
+    @Published var isLogginIn: Bool = false
     
     func signIn() async throws{
         try await AuthSerivce.shared.login(email: email, password: password)

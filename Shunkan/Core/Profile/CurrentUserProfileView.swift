@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SDWebImageSwiftUI
 struct CurrentUserProfileView: View {
     
 @State var selectedTab:Int = 0
@@ -14,7 +14,7 @@ struct CurrentUserProfileView: View {
 @State var backButtonVisible: Bool = false
 @State var createSheetToggle: Bool = false
 @State var settingsSheetToggle: Bool = false
-
+let user:User
 private let gridItems: [GridItem] = [
 .init(.flexible(),spacing: 1),
 .init(.flexible(),spacing: 1),
@@ -29,16 +29,29 @@ ScrollView{
               VStack(spacing: 10){
                   // pic and stats
                   HStack{
-                      Image("profile_placeholder")
-                          .resizable()
-                          .scaledToFill()
-                          .frame(width: 80,height: 80)
-                          .clipShape(Circle())
+                      
+                      
+                      if ((user.profilePictureURL) != nil){
+                          AnimatedImage(url:   URL(string: user.profilePictureURL ?? "") )
+                              .resizable()
+                              .scaledToFill()
+                              .frame(width: 80,height: 80)
+                              .clipShape(Circle())
+                          
+                      }else{
+                          Image("profile_placeholder")
+                              .resizable()
+                              .scaledToFill()
+                              .frame(width: 80,height: 80)
+                              .clipShape(Circle())
+                      }
+                      
+                      
                       Spacer()
                       HStack(spacing: 8){
-                          UserStackView(value: 3, title: "Posts")
-                          UserStackView(value: 23, title: "Followers")
-                          UserStackView(value: 13, title: "Following")
+                          UserStackView(value: user.posts.count, title: "Posts")
+                          UserStackView(value: user.followers.count, title: "Followers")
+                          UserStackView(value: user.following.count, title: "Following")
                       }
   
                   }
@@ -48,22 +61,23 @@ ScrollView{
   
                   // name and bio
                   VStack(alignment: .leading){
-  
-                      Text("Pranav Elric")
+                      
+                      Text(user.fullName ?? user.username)
                           .font(.footnote)
                           .fontWeight(.semibold)
-  
-                      Text("Go beyond plus ultra")
+                      
+                      Text( user.bio ?? "Go beyond plus ultra")
                           .font(.footnote)
-  
-                      Link(destination: URL(string: "https://pranavelric.dev")!) {
-                          Label("pranavelric.dev", systemImage: "link")
+                      
+                      Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")")!) {
+                          Label( user.bioLink ?? "pranavelric.dev", systemImage: "link")
                               .imageScale(.small).font(.footnote)
                       }
-  
+                      
                   }.frame(maxWidth: .infinity, alignment: .leading)
                       .padding(.horizontal)
-  
+                  
+                  
   
                   // action buttons
                   HStack{
@@ -108,22 +122,22 @@ ScrollView{
               }
               //story highlight
               VStack(alignment: .leading){
-                  Highlights(user: User.MOCK_USERS[0])
+                  Highlights(user:user)
               }.padding(.horizontal)
       .padding(.bottom)
   
-  
-  // post grid
+    
+    // post grid
     let height = UIScreen.main.bounds.width / 3
-    let multiplier = Double(Post.MOCK_Posts.count) / 3 + 2
+    let multiplier = Double(user.posts.count) / 3 + 2
     let min_height = height * multiplier
     VStack{
         HeaderTabBar(selectedTab: $selectedTab)
 
-        Grids(selectedTab: $selectedTab, user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
+        Grids(selectedTab: $selectedTab, user: user,posts: user.posts)
             .frame(alignment: .top)
             .padding(.top,-200)
-            .zIndex(-1.0)  
+            .zIndex(-1.0)
     }
     .frame(minHeight: CGFloat(min_height) ,alignment: .top)
 }
@@ -142,15 +156,17 @@ ScrollView{
   ToolbarItem(placement: .navigationBarLeading) {
       HStack {
                     
-          Text("Pranav Elrix")
+          Text("\(user.username)")
               .font(.title2)
               .fontWeight(.bold)
               .foregroundColor(.primary)
-          Image("bluetick")
-              .resizable()
-              .aspectRatio( contentMode: .fill)
-              .frame(width: 20, height: 20, alignment: .leading)
-              .opacity(1)
+          if(user.isBlueTickEnabled){
+              Image("bluetick")
+                  .resizable()
+                  .aspectRatio( contentMode: .fill)
+                  .frame(width: 20, height: 20, alignment: .leading)
+                  .opacity(1)
+          }
       }
   }
   ToolbarItem(placement: .navigationBarTrailing){
@@ -184,6 +200,6 @@ ScrollView{
 
 struct CurrentUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentUserProfileView()
+        CurrentUserProfileView(user: User.MOCK_USERS[0])
     }
 }

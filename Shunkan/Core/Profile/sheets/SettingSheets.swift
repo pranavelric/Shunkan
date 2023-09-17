@@ -22,10 +22,15 @@ struct SettingSheets: View {
                     }
                     
                 }
+                    
+     
+                
+                  
                 
                 
-            }.listStyle(.plain)
-                .listRowSeparator(.hidden)
+            }
+            .listStyle(.plain)
+            .listRowSeparator(.visible)
                 .padding(.vertical)
                 
         }

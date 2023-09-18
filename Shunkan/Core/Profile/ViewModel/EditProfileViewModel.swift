@@ -26,6 +26,11 @@ class EditProfileViewModel: ObservableObject{
         var data = [String: Any]()
         // update profile image if changed
         
+        if let profileImage = profileImage{
+          var imageUrl =  try await ImageUploader.uploadImage(image: profileImage)
+            data["profilePictureURL"] = imageUrl
+        }
+        
         // update name if changed
         if !fullname.isEmpty && user.fullName != fullname{
             data["fullName"] = fullname

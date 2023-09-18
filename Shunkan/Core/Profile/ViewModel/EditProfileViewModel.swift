@@ -20,6 +20,18 @@ class EditProfileViewModel: ObservableObject{
     
     init(user: User) {
         self.user = user
+        
+        if let fullname = user.fullName{
+            self.fullname = fullname
+        }
+        
+        if let bio = user.bio{
+            self.bio = bio
+        }
+        if let bioLink = user.bioLink{
+            self.biolink = bioLink
+        }
+        
     }
     
     func updateUserData() async throws{

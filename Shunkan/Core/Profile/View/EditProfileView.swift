@@ -48,6 +48,8 @@ struct EditProfileView: View {
                         do {
                             
                             try await viewModel.updateUserData()
+                            // load user data again
+                            try await AuthSerivce.shared.loadUserData()
                             dismiss()
                         } catch {
                             // Handle any errors that occur during user creation

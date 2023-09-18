@@ -74,7 +74,7 @@ struct ProfileView: View {
                             Text( user.bio ?? "Go beyond plus ultra")
                                 .font(.footnote)
                             
-                            Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")")!) {
+                            Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")") ?? URL(string: "http://pranavelric.dev")!) {
                                 Label( user.bioLink ?? "pranavelric.dev", systemImage: "link")
                                     .imageScale(.small).font(.footnote)
                             }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct User: Identifiable, Hashable ,  Codable{
     var id: String
@@ -25,6 +26,11 @@ struct User: Identifiable, Hashable ,  Codable{
     var posts: [Post]
     var isBlueTickEnabled: Bool = false
   
+    
+    var isCurrentUser: Bool  {
+        guard let currentUid = Auth.auth().currentUser?.uid else {return false}
+        return currentUid == id
+    }
 
 }
 

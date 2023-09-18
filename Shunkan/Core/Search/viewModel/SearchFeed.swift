@@ -53,6 +53,7 @@ class SearchFeedViewModel:ObservableObject{
         try await self.setCompositionalLayout()
     }
     
+    @MainActor
     func setCompositionalLayout() async throws{
         var compositionalArr : [Post] = []
         post.forEach { card in

@@ -10,6 +10,8 @@ import YPImagePicker
 
 struct MediaPicker: UIViewControllerRepresentable {
   
+   
+    
     class Coordinator: NSObject, UINavigationControllerDelegate {
         let parent: MediaPicker
         
@@ -23,7 +25,7 @@ struct MediaPicker: UIViewControllerRepresentable {
 
     typealias UIViewControllerType = YPImagePicker
     @Binding var image: UIImage?
-    
+    var cropTypeRectangle: Bool = true
     func makeUIViewController(context: Context) -> YPImagePicker {
         var config = YPImagePickerConfiguration()
        
@@ -31,7 +33,7 @@ struct MediaPicker: UIViewControllerRepresentable {
         config.shouldSaveNewPicturesToAlbum = false
         config.albumName = "Shunkan"
         config.showsPhotoFilters = true
-        config.showsCrop = .rectangle(ratio: 1)
+        config.showsCrop = cropTypeRectangle ? .rectangle(ratio: 1) : .circle
         config.screens = [.library,.photo,.video]
         config.startOnScreen = .library
         config.hidesStatusBar = false

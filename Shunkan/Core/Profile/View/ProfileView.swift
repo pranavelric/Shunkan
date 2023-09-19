@@ -91,10 +91,10 @@ struct ProfileView: View {
                                 Text("Follow")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
-                                    .foregroundColor(.black.opacity(0.7))
+                                    .foregroundColor(.white)
                                     .padding(.vertical, 10)
                                     .frame( maxWidth: .infinity)
-                                    .background(Color.gray.opacity(0.3))
+                                    .background(.pink)
                                     .cornerRadius(8)
                             }
                             

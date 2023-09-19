@@ -95,6 +95,7 @@ ScrollView{
                         .padding(.vertical, 10)
                         .frame( maxWidth: .infinity)
                         .background(Color.gray.opacity(0.3))
+                        
                         .cornerRadius(8)
                 }.fullScreenCover(isPresented: $showEditProfile){
                    EditProfileView(user: user)
@@ -193,7 +194,7 @@ ScrollView{
           } label: {
               Image(systemName: "line.3.horizontal").foregroundColor(.gray.opacity(0.6))
           }.sheet(isPresented: $settingsSheetToggle){
-              SettingSheets() .presentationDetents([ .medium, .large])
+              SettingSheets().presentationDetents([ .medium, .large])
                   .presentationDragIndicator(.visible)
                   .presentationCornerRadius(20)
           }

@@ -52,6 +52,7 @@ struct MainTabView: View {
         }
         .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight: UIScreen.main.bounds.height, maxHeight: .infinity, alignment: .topLeading)
         .accentColor(.black)
+       
 
     }
 }

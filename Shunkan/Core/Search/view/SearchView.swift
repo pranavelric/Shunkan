@@ -14,71 +14,75 @@ struct SearchView: View {
     let post: [Post]
     @StateObject var viewModel = SearchFeedViewModel()
     var body: some View {
-        NavigationStack{
-            VStack{
-              
-          
 
-             
-                                  
-                if viewModel.post.isEmpty {
-                                    ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
-                                }else{
-                                    ScrollView{
-                                        VStack(spacing: 4){
-                                            ForEach(viewModel.compositionalArray.indices,id: \.self){index in
-
-                                             // Check if offset is within bounds
-                                                    if index == 0 || index % 6 == 0 {
-                                                        Layout1(posts: viewModel.compositionalArray[index])
-
-
-                                                    } else if index % 3 == 0 {
-                                                      
-                                                        Layout3(posts: viewModel.compositionalArray[index])
-
-                                                    } else {
-                                                      
-                                                        Layout2(posts: viewModel.compositionalArray[index])
-
-                                                    }
-
-
-                                            }
-                                            
-                                        }
+            NavigationStack{
+                GeometryReader { _ in
+                ScrollView{
+                    
+                    
+                    
+                    
+                    
+                    if viewModel.post.isEmpty {
+                        ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }else{
+                        ScrollView{
+                            VStack(spacing: 4){
+                                ForEach(viewModel.compositionalArray.indices,id: \.self){index in
+                                    
+                                    // Check if offset is within bounds
+                                    if index == 0 || index % 6 == 0 {
+                                        Layout1(posts: viewModel.compositionalArray[index])
+                                        
+                                        
+                                    } else if index % 3 == 0 {
+                                        
+                                        Layout3(posts: viewModel.compositionalArray[index])
+                                        
+                                    } else {
+                                        
+                                        Layout2(posts: viewModel.compositionalArray[index])
+                                        
                                     }
+                                    
+                                    
                                 }
-                
-            }
-            .navigationBarItems(
-                              trailing:
-                                 Text("")
-            )
-            .navigationSearchBar(text: $text,
-
-                                 options: [
-                                    .automaticallyShowsSearchBar: true,
-                                    .obscuresBackgroundDuringPresentation: true,
-                                    .hidesNavigationBarDuringPresentation: true,
-                                    .hidesSearchBarWhenScrolling: true,
-                                    .placeholder: "Search",
-                                    .showsBookmarkButton: true,
-                                 ],
-                                 
-                                 actions: [
-                                    .onCancelButtonClicked: {
-                                        print("Cancel")
-                                    },
-                                    .onSearchButtonClicked: {
-                                        print("Search")
-                                    }
-                                 ], searchResultsContent: {
-                                     SearchList(searchableText: text,users: viewModel.users)
+                                
+                            }
+                        }
+                    }
+                    
+                }.ignoresSafeArea(.keyboard,edges: .all)
+                .navigationBarItems(
+                    trailing:
+                        Text("")
+                )
+                .navigationSearchBar(text: $text,
                                      
-
-                                 })
-        }
+                                     options: [
+                                        .automaticallyShowsSearchBar: true,
+                                        .obscuresBackgroundDuringPresentation: true,
+                                        .hidesNavigationBarDuringPresentation: true,
+                                        .hidesSearchBarWhenScrolling: true,
+                                        .placeholder: "Search",
+                                        .showsBookmarkButton: true,
+                                     ],
+                                     
+                                     actions: [
+                                        .onCancelButtonClicked: {
+                                            print("Cancel")
+                                        },
+                                        .onSearchButtonClicked: {
+                                            print("Search")
+                                        }
+                                     ], searchResultsContent: {
+                                         SearchList(searchableText: text,users: viewModel.users)
+                                         
+                                         
+                                     })
+            }.ignoresSafeArea(.keyboard,edges: .all)
+        }.ignoresSafeArea(.keyboard,edges: .all)
+            
     }
 }
 

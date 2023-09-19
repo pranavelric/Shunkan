@@ -12,25 +12,37 @@ struct UploadPostView: View {
 //    @State private var image: UIImage? = nil
     @StateObject var viewModel: UploadPostViewModel = UploadPostViewModel()
     @Binding var tabIndex: Int
+    
+    
+    //temp
+    @State private var redSize: CGSize = .zero
+    @State private var yellowSize: CGSize = .zero
+    @State private var name: String = ""
+    
+    
     var body: some View {
         NavigationStack{
               
-               
-           
-                Button {
-                 
-                } label: {
-                  
-                }
-                .sheet(isPresented: .constant(tabIndex == 2)) {
-                    MediaPicker(image: $viewModel.postImage).interactiveDismissDisabled(true)
-                    
-                }
+   
+                                    Button {
+                
+                                    } label: {
+                
+                                    }
+                                    .sheet(isPresented: .constant(tabIndex == 2)) {
+                                        MediaPicker(image: $viewModel.postImage).interactiveDismissDisabled(true)
+                
+                                    }
+                
+                                    NewPostView(viewModel: viewModel,tabIndex: $tabIndex)
 
-            NewPostView(viewModel: viewModel,tabIndex: $tabIndex)
-
-      
+                
+                
         }
+        
+        
+       
+        
     }
 }
 

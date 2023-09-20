@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FeedView: View {
 
+    @StateObject var viewModel: FeedViewModel = FeedViewModel()
     var body: some View {
         NavigationStack {
             ScrollView{
@@ -17,7 +18,7 @@ struct FeedView: View {
 //                    Highlights(user: User.MOCK_USERS[0])
 //                    Divider()
                     // sort the post according to time, and show only post of followings
-                    ForEach(Post.MOCK_Posts){ post in
+                    ForEach(viewModel.posts){ post in
                         FeedCell(post: post)
                     }
                 }

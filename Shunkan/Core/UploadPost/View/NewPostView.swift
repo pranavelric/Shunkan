@@ -14,15 +14,35 @@ struct NewPostView: View {
     @StateObject var viewModel: UploadPostViewModel
     @State var displaySheet: Bool = false
     @Binding var tabIndex: Int
+    
+    
+    @State var showError = false
+    @State var errorMsg: String? = nil
+    @State private var showSheet:Bool = false
+    
     var body: some View {
 
             VStack{
                 // action toolbar
+                if viewModel.isUploadingPost {
+                    Spacer()
+                    ProgressView {
+
+                                    Text("Uploading...")
+                                        .foregroundColor(.pink)
+                                        .bold()
+                        
+                    }.padding(.bottom,50)
+                    
+                    
+                    Image("upload")
+                        .resizable()
+                        .scaledToFit()
+                }
+                else{
                 HStack{
                     Button {
-                        caption = ""
-                        viewModel.postImage = nil
-                        tabIndex = 0
+                       clearPostDataAndReturnToFeed()
                         
                     } label: {
                         Text("cancel")
@@ -31,13 +51,47 @@ struct NewPostView: View {
                     Text("New Post")
                     Spacer()
                     Button {
+                        Task{
+                            
+                            
+                            withAnimation {
+                                viewModel.isUploadingPost = true
+                            }
+
+                            // Perform the task (creating a user in this case)
+                            do {
+                                
+                                try await viewModel.uploadPost(caption:caption)
+                                clearPostDataAndReturnToFeed()
+                                
+                            } catch {
+                                // Handle any errors that occur during user creation
+                                showError = true
+                                errorMsg = error.localizedDescription
+                                print("Error uploading post: \(error)")
+                            }
+
+                            // Hide the ProgressView after the task is completed
+                            withAnimation {
+                                viewModel.isUploadingPost = false
+                            }
+                            
+                            
                         
+                        }
                     } label: {
                         Text("Share")
                     }
+                    .alert(isPresented: $showError){
+                       Alert(title: Text("Failed to post"), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK") ))
+                   }
                 }.padding(.horizontal)
                 // post section
-                HStack(spacing: 8){
+             
+                    
+                
+                
+                HStack(spacing: 8) {
                     if let image = self.viewModel.postImage {
                         Image(uiImage: image)
                             .resizable()
@@ -132,9 +186,16 @@ struct NewPostView: View {
                     Spacer()
                 }
     
-                
+                }
             }
        
+    }
+    
+    
+    func clearPostDataAndReturnToFeed(){
+        caption = ""
+        viewModel.postImage = nil
+        tabIndex = 0
     }
 }
 

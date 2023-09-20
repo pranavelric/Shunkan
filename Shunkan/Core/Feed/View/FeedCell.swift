@@ -134,12 +134,18 @@ struct FeedCell: View {
             }
       
             // time label
-            Text("\(post.timestamp.timeAgoSinceNow())")
+            Text("\(post.timestamp)")
                 .font(.footnote)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.leading,10)
                 .padding(.top,-8)
                 .foregroundColor(.gray)
+//            Text("\(post.timestamp.timeAgoSinceNow())")
+//                .font(.footnote)
+//                .frame(maxWidth: .infinity,alignment: .leading)
+//                .padding(.leading,10)
+//                .padding(.top,-8)
+//                .foregroundColor(.gray)
             
         }
     }

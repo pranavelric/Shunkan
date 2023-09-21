@@ -14,7 +14,7 @@ struct LazyGrid: View {
         .init(.flexible(),spacing: 1),
         .init(.flexible(),spacing: 1)
     ]
-    let user: User
+  
     let posts: [Post]
     
     
@@ -55,6 +55,6 @@ struct LazyGrid: View {
 
 struct LazyGrid_Previews: PreviewProvider {
     static var previews: some View {
-        LazyGrid(user: User.MOCK_USERS[0], posts: [Post.MOCK_Posts[0]])
+        LazyGrid(posts: [Post.MOCK_Posts[0]])
     }
 }

@@ -56,6 +56,8 @@
 		1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */; };
 		1E89961C2AAF51FE00907224 /* SearchFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89961B2AAF51FE00907224 /* SearchFeed.swift */; };
 		1E8996212AAF9AFD00907224 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E8996202AAF9AFD00907224 /* GoogleService-Info.plist */; };
+		1E964E572ABC2F4D00FCDC05 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E964E562ABC2F4D00FCDC05 /* PostService.swift */; };
+		1E964E5A2ABC328A00FCDC05 /* PostGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E964E592ABC328A00FCDC05 /* PostGridViewModel.swift */; };
 		1E994CC42AACA4D40063DA4A /* CurrentUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */; };
 		1E994CC72AACFD890063DA4A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC62AACFD890063DA4A /* Date.swift */; };
 		1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */; };
@@ -126,6 +128,8 @@
 		1E7A87FD2AA5C91500F595E7 /* LazyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyGrid.swift; sourceTree = "<group>"; };
 		1E89961B2AAF51FE00907224 /* SearchFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFeed.swift; sourceTree = "<group>"; };
 		1E8996202AAF9AFD00907224 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E964E562ABC2F4D00FCDC05 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		1E964E592ABC328A00FCDC05 /* PostGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridViewModel.swift; sourceTree = "<group>"; };
 		1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileView.swift; sourceTree = "<group>"; };
 		1E994CC62AACFD890063DA4A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUp.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 		1E0532742AA5187B005409BA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1E964E582ABC326B00FCDC05 /* ViewModel */,
 				1E7A87F52AA5AC7E00F595E7 /* highlights */,
 				1E0532752AA51895005409BA /* UserStackView.swift */,
 				1E5942DF2AA8BE8900BCE06E /* TextFieldModifier.swift */,
@@ -435,11 +440,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1E964E582ABC326B00FCDC05 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E964E592ABC328A00FCDC05 /* PostGridViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1EA9203E2AB793FE008EFF17 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				1EA9203C2AB793F1008EFF17 /* UserService.swift */,
 				1E4DDAF32AB8C40D00E005A4 /* ImageUploader.swift */,
+				1E964E562ABC2F4D00FCDC05 /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -619,6 +633,7 @@
 				1EAE8FB02AB634AE006A3A74 /* String.swift in Sources */,
 				1E0791072AA764C600F7A79C /* Layout1.swift in Sources */,
 				1E7A87F72AA5AC8C00F595E7 /* Highlights.swift in Sources */,
+				1E964E5A2ABC328A00FCDC05 /* PostGridViewModel.swift in Sources */,
 				1E0AB72F2AB44EAB004D825B /* LoginViewModel.swift in Sources */,
 				1EF037CA2AA5FBE300032D43 /* HeaderTabBar.swift in Sources */,
 				1E4CD6532AAE0C5900404307 /* UploadPostView.swift in Sources */,
@@ -660,6 +675,7 @@
 				1E994CC72AACFD890063DA4A /* Date.swift in Sources */,
 				1E3CE2012AAB8FCA00BCC3F8 /* Likable.swift in Sources */,
 				1E0AB7272AB420D6004D825B /* Sheet.swift in Sources */,
+				1E964E572ABC2F4D00FCDC05 /* PostService.swift in Sources */,
 				1E3CE2052AAB908200BCC3F8 /* Notification.swift in Sources */,
 				1E5942E02AA8BE8900BCE06E /* TextFieldModifier.swift in Sources */,
 				1ECD70E22AB0460D003F939F /* ContentViewModel.swift in Sources */,

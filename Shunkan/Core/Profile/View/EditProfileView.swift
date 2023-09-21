@@ -26,6 +26,22 @@ struct EditProfileView: View {
     var body: some View {
         VStack{
             // action toolbar
+            if viewModel.isUpdatingUser {
+                Spacer()
+                ProgressView {
+
+                                Text("Updating...")
+                                    .foregroundColor(.pink)
+                                    .bold()
+                    
+                }.padding(.bottom,50)
+                
+                
+                Image("profile_update")
+                    .resizable()
+                    .scaledToFit()
+            }
+            else{
             HStack{
                 Button {
                    dismiss()
@@ -75,10 +91,7 @@ struct EditProfileView: View {
             }.padding(.horizontal)
             Divider()
             // post section
-            if viewModel.isUpdatingUser {
-                               ProgressView("Updating...")
-            }
-            else{
+
                 HStack(spacing: 8){
                     
                     Button{

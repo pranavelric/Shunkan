@@ -11,9 +11,14 @@ struct ProfileView: View {
 
              
     let user: User
-    var posts: [Post]{
-        return Post.MOCK_Posts.filter({$0.user?.username == user.username})
-    }
+    
+    
+//    var posts: [Post]{
+//        return Post.MOCK_Posts.filter({$0.user?.username == user.username})
+//    }
+//    
+    
+    
     @State var selectedTab:Int = 0
     @State var gridSize: Int = 0
     @State var backButtonVisible: Bool = false
@@ -23,6 +28,9 @@ struct ProfileView: View {
         .init(.flexible(),spacing: 1)
     ]
     @Environment(\.dismiss) var dismiss
+    @State var showEditProfile: Bool = false
+    @State var createSheetToggle: Bool = false
+    @State var settingsSheetToggle: Bool = false
     
     var body: some View {
 
@@ -86,17 +94,33 @@ struct ProfileView: View {
                         // action buttons
                         HStack{
                             Button{
-                                
+                                if(user.isCurrentUser){
+                                    showEditProfile.toggle()
+                                }
                             } label:{
-                                Text("Follow")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
-                                    .padding(.vertical, 10)
-                                    .frame( maxWidth: .infinity)
-                                    .background(.pink)
-                                    .cornerRadius(8)
-                            }
+                                if (!user.isCurrentUser){
+                                    Text("Follow")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, 10)
+                                        .frame( maxWidth: .infinity)
+                                        .background(.pink)
+                                        .cornerRadius(8)
+                                }else{
+                                    Text("Edit Profile")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.black.opacity(0.7))
+                                        .padding(.vertical, 10)
+                                        .frame( maxWidth: .infinity)
+                                        .background(Color.gray.opacity(0.3))
+
+                                        .cornerRadius(8)
+                                }
+                            }.fullScreenCover(isPresented: $showEditProfile){
+                                EditProfileView(user: user)
+                             }
                             
                             Button{
                                 
@@ -136,8 +160,8 @@ struct ProfileView: View {
 //                        let temp = UIScreen.main.bounds.width / 3
 //                        let tempHeight =  UIScreen.main.bounds.height
 //                        let multiplier = CGFloat (posts.count / 3 )
-                        
-                        Grids(selectedTab: $selectedTab,user: user,posts: posts)
+                       
+                Grids(selectedTabValue: $selectedTab,user: user)
 //                            .frame(height: ((temp) * ( multiplier  )  ) + temp,alignment: .bottom)
                             .frame(height: UIScreen.main.bounds.height,alignment: .bottom)
                     
@@ -158,19 +182,42 @@ struct ProfileView: View {
                             }
                 }
                 
-        
-                ToolbarItem(placement: .navigationBarTrailing){
-                    
-                    HStack{
-                        Button{
+      
+                if(user.isCurrentUser){
+                        ToolbarItem(placement: .navigationBarTrailing){
                             
-                        } label: {
-                            Image(systemName: "ellipsis").foregroundColor(.gray.opacity(0.6))
+                            HStack{
+                                Button{
+                                    createSheetToggle.toggle()
+                                } label: {
+                                    Image(systemName: "plus.square.fill").foregroundColor(.gray.opacity(0.6))
+                                }
+                                Button{
+                                    settingsSheetToggle.toggle()
+                                } label: {
+                                    Image(systemName: "line.3.horizontal").foregroundColor(.gray.opacity(0.6))
+                                }.sheet(isPresented: $settingsSheetToggle){
+                                    SettingSheets().presentationDetents([ .medium, .large])
+                                        .presentationDragIndicator(.visible)
+                                        .presentationCornerRadius(20)
+                                }
+                            }
                         }
-                     
+
+                    }
+                    else{
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        
+                        HStack{
+                            Button{
+                                
+                            } label: {
+                                Image(systemName: "ellipsis").foregroundColor(.gray.opacity(0.6))
+                            }
+                            
+                        }
                     }
                 }
-                
             }
 
         }

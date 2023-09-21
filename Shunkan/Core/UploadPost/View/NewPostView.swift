@@ -35,7 +35,7 @@ struct NewPostView: View {
                     }.padding(.bottom,50)
                     
                     
-                    Image("upload")
+                    Image("upload_post")
                         .resizable()
                         .scaledToFit()
                 }

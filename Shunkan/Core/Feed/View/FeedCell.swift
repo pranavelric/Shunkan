@@ -10,8 +10,11 @@ import SDWebImageSwiftUI
 
 struct FeedCell: View {
     let post: Post
+    
     var body: some View {
+       
         VStack {
+//            Text(post)
             // profile-pic- username feed-settings button
             NavigationLink (value: post.user, label: {
                 HStack{
@@ -134,7 +137,7 @@ struct FeedCell: View {
             }
       
             // time label
-            Text("\(post.timestamp)")
+            Text("\(post.timestamp.dateValue().timeAgoSinceNow())")
                 .font(.footnote)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.leading,10)

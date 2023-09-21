@@ -9,9 +9,17 @@ import SwiftUI
 
 struct Grids: View {
     @Binding var selectedTab:Int
-
     let user: User
-    let posts: [Post]
+    @StateObject var viewModel: PostGridViewModel
+
+    init(selectedTabValue: Binding<Int>, user: User) {
+        self.user = user
+        self._selectedTab = selectedTabValue
+        self._viewModel = StateObject(wrappedValue: PostGridViewModel(user: user))
+    }
+    
+
+//    let posts: [Post]
     var body: some View {
         
         
@@ -20,9 +28,9 @@ struct Grids: View {
             
 
             TabView(selection: $selectedTab){
-                LazyGrid( user: user,posts: posts).tag(0)
-                LazyGrid(user: user,posts: [Post.MOCK_Posts[0]]).tag(1)
-                LazyGrid(user: user,posts: posts).tag(2)
+                LazyGrid( posts: viewModel.posts).tag(0)
+                LazyGrid(posts: viewModel.posts).tag(1)
+                LazyGrid(posts: viewModel.posts).tag(2)
                 
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -36,6 +44,6 @@ struct Grids: View {
 
 struct Grids_Previews: PreviewProvider {
     static var previews: some View {
-        Grids(selectedTab: .constant(0),user: User.MOCK_USERS[0],posts: Post.MOCK_Posts)
+        Grids(selectedTabValue: .constant(0),user: User.MOCK_USERS[0])
     }
 }

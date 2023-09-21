@@ -134,24 +134,26 @@ ScrollView{
         VStack(alignment: .leading){
             Highlights(user:user)
         }
-        .padding(.top)
+//        .padding(.top)
         .padding(.horizontal)
         .padding(.bottom)
         
         
         // post grid
-        let height = UIScreen.main.bounds.width / 3
-        let multiplier = Double(user.posts.count) / 3 + 2
-        let min_height = height * multiplier
-        VStack{
+//        let height = UIScreen.main.bounds.width / 3
+//        let multiplier = Double(user.posts.count) / 3 + 2
+//        let min_height = height * multiplier
+//        VStack{
             HeaderTabBar(selectedTab: $selectedTab)
             
-            Grids(selectedTab: $selectedTab, user: user,posts: user.posts)
-                .frame(alignment: .top)
-                .padding(.top,-200)
-                .zIndex(-1.0)
-        }
-        .frame(minHeight: CGFloat(min_height) ,alignment: .top)
+            Grids(selectedTabValue: $selectedTab, user: user)
+                .frame(height: UIScreen.main.bounds.height,alignment: .bottom)
+
+//                .frame(alignment: .top)
+//                .padding(.top,-200)
+//                .zIndex(-1.0)
+//        }
+//        .frame(minHeight: CGFloat(min_height) ,alignment: .top)
 }
 .toolbar{
 

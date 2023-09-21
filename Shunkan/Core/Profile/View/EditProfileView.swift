@@ -134,7 +134,7 @@ struct EditProfileView: View {
                     
                     .sheet(isPresented: $showSheet) {
                         
-                        MediaPicker(image: $viewModel.profileImage,cropTypeRectangle: false).interactiveDismissDisabled(true)
+                        MediaPicker(image: $viewModel.profileImage, isCanceled: .constant(false),cropTypeRectangle: false).interactiveDismissDisabled(true)
                         
                     }
                     

@@ -37,9 +37,9 @@ enum ConversationType: Codable {
 
 extension Message {
     
-static var userA = User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL: "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
-static var userB =  User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
-static var userC = User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
+static var userA = User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL: "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
+static var userB =  User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
+static var userC = User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
     
     static var MOCK_Messages: [Message] = [
         Message(id: "1", sender: userA, text: "Hi, how are you?", timestamp: Date(), conversationID: "1"),
@@ -53,9 +53,9 @@ static var userC = User(id: "3", username: "alice", email: "alice@example.com", 
 
 extension Conversation {
     
-    static var userA = User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
-    static var userB =  User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
-    static var userC = User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
+    static var userA = User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
+    static var userB =  User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
+    static var userC = User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
     
     
     static var MOCK_Conversations: [Conversation] = [

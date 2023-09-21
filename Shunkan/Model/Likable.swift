@@ -27,9 +27,9 @@ struct Like:  Codable, Identifiable, Hashable{
 // Create mock data for the Like model
 extension Like {
     static var MOCK_Likes: [Like] = [
-        Like(id: "1", user:  User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: []), timestamp: Date()),
-        Like(id: "2",  user: User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: []), timestamp: Date()),
-        Like(id: "3", user: User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: []), timestamp: Date()),
+        Like(id: "1", user:  User(id: "1", username: "johndoe", email: "john@example.com",  profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0), timestamp: Date()),
+        Like(id: "2",  user: User(id: "2", username: "janedoe", email: "jane@example.com",  profilePictureURL: "https://example.com/user2.jpg", bio: "Travel enthusiast and foodie.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0), timestamp: Date()),
+        Like(id: "3", user: User(id: "3", username: "alice", email: "alice@example.com",  profilePictureURL:  "https://example.com/user3.jpg", bio: "Art lover and painter.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0), timestamp: Date()),
     ]
 }
 

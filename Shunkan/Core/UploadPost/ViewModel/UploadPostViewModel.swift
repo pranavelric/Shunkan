@@ -27,6 +27,7 @@ class UploadPostViewModel: ObservableObject{
         guard let encodedPost = try? Firestore.Encoder().encode(post) else {return}
         
         try await postRef.setData(encodedPost)
+        try await UserService.upDateUserPosts(uid: uid)
     }
     
 }

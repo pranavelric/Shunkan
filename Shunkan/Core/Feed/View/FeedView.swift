@@ -42,7 +42,7 @@ struct FeedView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
 
-                        Image("font_white_bg")
+                        Image("logo_bg_white")
                             .resizable()
                             .aspectRatio( contentMode: .fit)
                             .frame(width: 100, height: 32, alignment: .leading)

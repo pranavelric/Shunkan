@@ -51,7 +51,7 @@ ScrollView{
                 
                 Spacer()
                 HStack(spacing: 8){
-                    UserStackView(value: user.posts.count, title: "Posts")
+                    UserStackView(value: user.posts, title: "Posts")
                     UserStackView(value: user.followers.count, title: "Followers")
                     UserStackView(value: user.following.count, title: "Following")
                 }
@@ -206,6 +206,11 @@ ScrollView{
 }
 
 
+}.onAppear{
+    Task{
+        try await AuthSerivce.shared.loadUserData()
+    }
+    
 }
 
 

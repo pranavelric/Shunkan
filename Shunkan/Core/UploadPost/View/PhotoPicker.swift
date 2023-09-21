@@ -25,6 +25,7 @@ struct MediaPicker: UIViewControllerRepresentable {
 
     typealias UIViewControllerType = YPImagePicker
     @Binding var image: UIImage?
+    @Binding var isCanceled: Bool?
     var cropTypeRectangle: Bool = true
     func makeUIViewController(context: Context) -> YPImagePicker {
         var config = YPImagePickerConfiguration()
@@ -48,9 +49,13 @@ struct MediaPicker: UIViewControllerRepresentable {
         config.targetImageSize = .cappedTo(size: 1080)
         
         let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [unowned picker] items, _ in
+        picker.didFinishPicking { [unowned picker] items, canceled in
+            if canceled{
+             isCanceled = true
+            }
             if let photo = items.singlePhoto {
                 self.image = photo.image
+                isCanceled = true
             }
             picker.dismiss(animated: true, completion: nil)
         }

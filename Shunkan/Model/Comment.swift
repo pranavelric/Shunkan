@@ -18,7 +18,7 @@ struct Comment:  Codable, Identifiable, Hashable {
 
 
 extension Comment{
-    static var  MOCK_USER = User(id: "1", username: "johndoe", email: "john@example.com", profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: [])
+    static var  MOCK_USER = User(id: "1", username: "johndoe", email: "john@example.com", profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
 
     static var MOCK_Comment: [Comment] = [
         .init(id: "1", text: "Great photo!", user: MOCK_USER, timestamp: Date()),

@@ -20,42 +20,27 @@ class SearchFeedViewModel:ObservableObject{
         }
     }
     
+    
+   
+    
     @MainActor
     func fetchAllUsers() async throws{
         self.users = try await UserService.FetchAllUsers()
         
     }
     
-    
-    ///MARK:- read local json file store data in userprofile object
     @MainActor
     func loadData() async throws {
-//        let url = "https://picsum.photos/v2/list?page=2&limit=60"
-//
-//        let session = URLSession(configuration: .default)
-//        session.dataTask(with: URL.init(string: url)!) { data, response, error in
-//
-//            if error != nil{
-//                print(error?.localizedDescription ?? "")
-//            }
-//            guard let json = data else{return}
-//
-//            let jsonValue = try? JSONDecoder().decode([Card].self, from: json)
-//            guard let cards = jsonValue else{return}
-//            DispatchQueue.main.async {
-//                self.cards =  cards
-//                self.setCompositionalLayout()
-//            }
-//
-//        }.resume()
-
-        post = Post.MOCK_Posts
+        
+        self.post = try await PostService.fetchFeedPosts()
         try await self.setCompositionalLayout()
     }
     
     @MainActor
     func setCompositionalLayout() async throws{
+        
         var compositionalArr : [Post] = []
+        self.compositionalArray = []
         post.forEach { card in
             compositionalArr.append(card)
             if compositionalArray.count % 2 == 0 ||  compositionalArray.count % 3 == 0{

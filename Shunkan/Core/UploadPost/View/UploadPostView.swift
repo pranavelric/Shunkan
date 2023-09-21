@@ -18,7 +18,7 @@ struct UploadPostView: View {
     @State private var redSize: CGSize = .zero
     @State private var yellowSize: CGSize = .zero
     @State private var name: String = ""
-    
+    @State private var isCanceled:Bool? = false
     
     var body: some View {
         NavigationStack{
@@ -29,8 +29,8 @@ struct UploadPostView: View {
                                     } label: {
                 
                                     }
-                                    .sheet(isPresented: .constant(tabIndex == 2)) {
-                                        MediaPicker(image: $viewModel.postImage).interactiveDismissDisabled(true)
+                                    .sheet(isPresented: .constant(tabIndex == 2 && !isCanceled!)) {
+                                        MediaPicker(image: $viewModel.postImage, isCanceled: $isCanceled).interactiveDismissDisabled(true)
                 
                                     }
                 

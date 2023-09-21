@@ -36,4 +36,11 @@ struct UserService{
 //        return users
     }
     
+    static func upDateUserPosts(uid:String) async throws {
+        let snapshot = Firestore.firestore().collection("users").document(uid)
+        try await snapshot.updateData([
+            "posts": FieldValue.increment(Int64(1))
+        ])
+    }
+
 }

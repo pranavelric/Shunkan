@@ -20,7 +20,7 @@ struct SignInView: View {
             VStack{
                 Spacer()
                 // logo image
-                Image("font_white_bg")
+                Image("logo_bg_white")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 220,height: 100)

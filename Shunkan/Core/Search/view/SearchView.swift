@@ -52,7 +52,19 @@ struct SearchView: View {
                         }
                     }
                     
-                }.ignoresSafeArea(.keyboard,edges: .all)
+                }
+                .refreshable {
+                    Task{
+                        try await viewModel.loadData()
+                    }
+                }
+                .onAppear{
+                    Task{
+                        try await viewModel.loadData()
+                    }
+                    
+                }
+                .ignoresSafeArea(.keyboard,edges: .all)
                 .navigationBarItems(
                     trailing:
                         Text("")

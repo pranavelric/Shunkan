@@ -62,6 +62,7 @@ struct NewPostView: View {
                             do {
                                 
                                 try await viewModel.uploadPost(caption:caption)
+                                try 
                                 clearPostDataAndReturnToFeed()
                                 
                             } catch {

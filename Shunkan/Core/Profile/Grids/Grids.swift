@@ -35,6 +35,13 @@ struct Grids: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+            .onAppear{
+             
+                    Task{
+                        try await viewModel.fetchUserPosts()
+                    }
+                
+            }
 //            .frame(height: 1900, alignment: .top)
 
             

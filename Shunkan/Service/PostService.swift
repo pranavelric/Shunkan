@@ -20,12 +20,24 @@ struct PostService{
             let postUser = try await UserService.fetchUser(withUid: ownerUid)
             posts[i].user = postUser
         }
-        return posts
+        
+        let sortedPosts = posts.sorted { post1, post2 in
+            return post1.timestamp.dateValue() > post2.timestamp.dateValue()
+        }
+        
+        return sortedPosts
     }
     
     static func fetchUserPost(uid:String) async throws ->[Post]{
         let snapshot = try await postCollection.whereField("ownerUid", isEqualTo: uid).getDocuments()
-        return  try snapshot.documents.compactMap({try $0.data(as: Post.self)})
+        let posts =  try snapshot.documents.compactMap({try $0.data(as: Post.self)})
+
+        let sortedPosts = posts.sorted { post1, post2 in
+            return post1.timestamp.dateValue() > post2.timestamp.dateValue()
+        }
+        
+        return sortedPosts
+
     }
     
 }

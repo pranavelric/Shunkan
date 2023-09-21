@@ -25,8 +25,6 @@ class PostGridViewModel: ObservableObject{
         for i in 0 ..< posts.count {
             posts[i].user = self.user
         }
-        print("the posts are ")
-        print(posts)
         
     }
     

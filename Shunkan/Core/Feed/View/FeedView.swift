@@ -11,6 +11,7 @@ struct FeedView: View {
 
     @StateObject var viewModel: FeedViewModel = FeedViewModel()
     var body: some View {
+        
         NavigationStack {
             ScrollView{
                 
@@ -23,6 +24,16 @@ struct FeedView: View {
                     }
                 }
                 .padding(.top,8)
+            }.refreshable {
+                Task{
+                    try await viewModel.fetchPosts()
+                }
+            }
+            .onAppear{
+                Task{
+                    try await viewModel.fetchPosts()
+                }
+                
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)

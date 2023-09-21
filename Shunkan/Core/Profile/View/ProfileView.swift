@@ -85,7 +85,7 @@ struct ProfileView: View {
                             Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")") ?? URL(string: "http://pranavelric.dev")!) {
                                 Label( user.bioLink ?? "pranavelric.dev", systemImage: "link")
                                     .imageScale(.small).font(.footnote)
-                            }
+                            }.foregroundColor(.pink)
                             
                         }.frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal)
@@ -218,6 +218,11 @@ struct ProfileView: View {
                         }
                     }
                 }
+            }.onAppear{
+                Task{
+                    try await AuthSerivce.shared.loadUserData()
+                }
+                
             }
 
         }

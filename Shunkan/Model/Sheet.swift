@@ -19,6 +19,17 @@ struct Sheet: Identifiable, Hashable ,  Codable{
 }
 
 extension Sheet{
+    
+    static var CREATE_ITEM_SHEET_ITEMS: [Sheet] = [
+        
+        .init(id: "1", itemName:"Reel",imageName:"play.rectangle"),
+        .init(id: "2", itemName:"Post",imageName:"rectangle.split.3x3"),
+        .init(id: "3", itemName:"Story",imageName:"plus.circle.fill"),
+        .init(id: "4", itemName:"Story Highlight",imageName:"heart.circle"),
+        .init(id: "5", itemName:"Live",imageName:"dot.radiowaves.left.and.right"),
+        .init(id: "6", itemName:"Guide",imageName:"book"),
+    ]
+    
     static var SETTINGS_SHEET_ITEMS: [Sheet] = [
         
         .init(id: "1", itemName:"Settings",imageName:"circle.grid.hex"),

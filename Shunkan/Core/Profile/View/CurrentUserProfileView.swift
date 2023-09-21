@@ -74,7 +74,7 @@ ScrollView{
                 Link(destination: URL(string: "http://\(user.bioLink ?? "pranavelric.dev")") ?? URL(string: "http://pranavelric.dev")!) {
                     Label( user.bioLink ?? "pranavelric.dev", systemImage: "link")
                         .imageScale(.small).font(.footnote)
-                }
+                }.foregroundColor(.pink)
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -190,7 +190,13 @@ ScrollView{
               createSheetToggle.toggle()
           } label: {
               Image(systemName: "plus.square.fill").foregroundColor(.gray.opacity(0.6))
+          }.sheet(isPresented: $createSheetToggle){
+              SettingSheets().presentationDetents([ .medium])
+                  .presentationDragIndicator(.visible)
+                  .presentationCornerRadius(20)
           }
+          
+          
           Button{
               settingsSheetToggle.toggle()
           } label: {

@@ -58,6 +58,7 @@
 		1E8996212AAF9AFD00907224 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E8996202AAF9AFD00907224 /* GoogleService-Info.plist */; };
 		1E964E572ABC2F4D00FCDC05 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E964E562ABC2F4D00FCDC05 /* PostService.swift */; };
 		1E964E5A2ABC328A00FCDC05 /* PostGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E964E592ABC328A00FCDC05 /* PostGridViewModel.swift */; };
+		1E964E5C2ABC4BAF00FCDC05 /* CreateItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E964E5B2ABC4BAF00FCDC05 /* CreateItemSheet.swift */; };
 		1E994CC42AACA4D40063DA4A /* CurrentUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */; };
 		1E994CC72AACFD890063DA4A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E994CC62AACFD890063DA4A /* Date.swift */; };
 		1EA5E69A2AAA25CA009F248B /* CompleteSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */; };
@@ -130,6 +131,7 @@
 		1E8996202AAF9AFD00907224 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E964E562ABC2F4D00FCDC05 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		1E964E592ABC328A00FCDC05 /* PostGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridViewModel.swift; sourceTree = "<group>"; };
+		1E964E5B2ABC4BAF00FCDC05 /* CreateItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemSheet.swift; sourceTree = "<group>"; };
 		1E994CC32AACA4D40063DA4A /* CurrentUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileView.swift; sourceTree = "<group>"; };
 		1E994CC62AACFD890063DA4A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1EA5E6992AAA25CA009F248B /* CompleteSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUp.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			children = (
 				1EF511712AB372B5000E0158 /* SettingSheets.swift */,
 				1EF511732AB37367000E0158 /* SheetItem.swift */,
+				1E964E5B2ABC4BAF00FCDC05 /* CreateItemSheet.swift */,
 			);
 			path = sheets;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				1E7A87FE2AA5C91500F595E7 /* LazyGrid.swift in Sources */,
 				1E3CE20D2AABA7A800BCC3F8 /* Story.swift in Sources */,
 				1E0532582AA4CE06005409BA /* ContentView.swift in Sources */,
+				1E964E5C2ABC4BAF00FCDC05 /* CreateItemSheet.swift in Sources */,
 				1E5942DE2AA89F9600BCE06E /* AddEmailView.swift in Sources */,
 				1EAE8FB02AB634AE006A3A74 /* String.swift in Sources */,
 				1E0791072AA764C600F7A79C /* Layout1.swift in Sources */,

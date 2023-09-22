@@ -37,9 +37,6 @@ class AuthSerivce{
     @MainActor
     func createUser(email:String,password:String,username:String) async throws{
         do{
-           
-            print(email)
-            print(password)
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
             await uploadUserData(uid: result.user.uid,username: username,email: email)

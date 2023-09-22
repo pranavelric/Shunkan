@@ -23,6 +23,12 @@ private let gridItems: [GridItem] = [
 .init(.flexible(),spacing: 1)
 ]
 @Environment(\.dismiss) var dismiss
+    
+@StateObject var viewModel :ProfileViewModel
+init(user:User){
+        self.user = user
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(userId: user.id))
+}
 
 var body: some View {
 NavigationView {
@@ -52,8 +58,8 @@ ScrollView{
                 Spacer()
                 HStack(spacing: 8){
                     UserStackView(value: user.posts, title: "Posts")
-                    UserStackView(value: user.followers.count, title: "Followers")
-                    UserStackView(value: user.following.count, title: "Following")
+                    UserStackView(value: viewModel.followers, title: "Followers")
+                    UserStackView(value: viewModel.followings, title: "Following")
                 }
                 
             }
@@ -215,7 +221,9 @@ ScrollView{
 }.onAppear{
     Task{
         try await AuthSerivce.shared.loadUserData()
+        try await viewModel.loadData(userId: user.id)
     }
+    
     
 }
 

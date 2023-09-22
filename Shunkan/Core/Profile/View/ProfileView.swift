@@ -28,9 +28,24 @@ struct ProfileView: View {
         .init(.flexible(),spacing: 1)
     ]
     @Environment(\.dismiss) var dismiss
+    
     @State var showEditProfile: Bool = false
     @State var createSheetToggle: Bool = false
     @State var settingsSheetToggle: Bool = false
+    
+    
+    
+    @StateObject var viewModel :ProfileViewModel
+    
+    @State var showError = false
+    @State var errorMsg: String? = nil
+    @State private var showSheet:Bool = false
+    
+    init(user:User){
+            self.user = user
+            self._viewModel = StateObject(wrappedValue: ProfileViewModel(userId: user.id))
+    }
+    
     
     var body: some View {
 
@@ -63,8 +78,8 @@ struct ProfileView: View {
                             Spacer()
                             HStack(spacing: 8){
                                 UserStackView(value: user.posts, title: "Posts")
-                                UserStackView(value: user.followers.count, title: "Followers")
-                                UserStackView(value: user.following.count, title: "Following")
+                                UserStackView(value: viewModel.followers, title: "Followers")
+                                UserStackView(value: viewModel.followings, title: "Following")
                             }
                             
                         }
@@ -96,17 +111,55 @@ struct ProfileView: View {
                             Button{
                                 if(user.isCurrentUser){
                                     showEditProfile.toggle()
+                                }else{
+                                    Task{
+                                        
+                                        
+                                        withAnimation {
+                                            viewModel.isProcessing = true
+                                        }
+
+                                        // Perform the task (creating a user in this case)
+                                        do {
+                                            
+                                            try await viewModel.follow(userId: user.id)
+                                            
+                                            
+                                            
+                                        } catch {
+                                            // Handle any errors that occur during user creation
+                                            showError = true
+                                            errorMsg = error.localizedDescription
+                                            print("Error : \(error)")
+                                        }
+
+                                        // Hide the ProgressView after the task is completed
+                                        withAnimation {
+                                            viewModel.isProcessing = false
+                                        }
+                                        
+                                        
+                                     
+                                    }
                                 }
                             } label:{
                                 if (!user.isCurrentUser){
-                                    Text("Follow")
-                                        .font(.subheadline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .padding(.vertical, 10)
-                                        .frame( maxWidth: .infinity)
-                                        .background(.pink)
-                                        .cornerRadius(8)
+                                    if (viewModel.isProcessing){
+                                        ProgressView().frame(maxWidth: .infinity,minHeight: 40)
+                                            .foregroundColor(.white)
+                                            .background(.pink)
+                                            .cornerRadius(8)
+                                    }else{
+                                        Text((viewModel.followCheck) ? "Unfollow": "Follow")
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                            .padding(.vertical, 10)
+                                            .frame( maxWidth: .infinity)
+                                            .background(.pink)
+                                            .cornerRadius(8)
+                                    }
+                                  
                                 }else{
                                     Text("Edit Profile")
                                         .font(.subheadline)
@@ -121,6 +174,9 @@ struct ProfileView: View {
                             }.fullScreenCover(isPresented: $showEditProfile){
                                 EditProfileView(user: user)
                              }
+                            .alert(isPresented: $showError){
+                               Alert(title: Text("Failed to \((viewModel.followCheck) ? "Unfollow": "Follow") "), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK") ))
+                           }
                             
                             Button{
                                 
@@ -221,8 +277,10 @@ struct ProfileView: View {
             }.onAppear{
                 Task{
                     try await AuthSerivce.shared.loadUserData()
+                    
+                    try await viewModel.loadData(userId: user.id)
                 }
-                
+                  
             }
 
         }

@@ -10,7 +10,7 @@ import Firebase
 class FeedViewModel:ObservableObject{
     @Published var posts = [Post]()
     
-    
+  
     
     init(){
         
@@ -18,6 +18,7 @@ class FeedViewModel:ObservableObject{
             try await fetchPosts()
         }
     }
+    
     
     
     @MainActor

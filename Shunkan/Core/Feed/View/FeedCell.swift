@@ -10,6 +10,12 @@ import SDWebImageSwiftUI
 
 struct FeedCell: View {
     let post: Post
+    @StateObject var feedCellService: FeedCellService
+    
+    init(post: Post) {
+        self.post = post
+        self._feedCellService = StateObject(wrappedValue: FeedCellService(postId: post.id))
+    }
     
     var body: some View {
        
@@ -75,9 +81,19 @@ struct FeedCell: View {
             // action-buttons
             HStack{
                 Button{
-                    
+                    if(feedCellService.isLiked){
+                        feedCellService.unLike()
+                    }
+                    else{
+                        feedCellService.like()
+                    }
                 } label: {
-                    Image(systemName: "heart")
+                    if(feedCellService.isLiked){
+                        Image(systemName: "heart.fill").foregroundColor(.red)
+                    }
+                    else{
+                        Image(systemName: "heart")
+                    }
                 }
                 
                 Button{
@@ -108,7 +124,7 @@ struct FeedCell: View {
                 
             
             //likes label
-            Text("\(post.likes.count) likes")
+            Text("\(feedCellService.post?.likeCount ?? 0) likes")
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity,alignment: .leading)
@@ -149,6 +165,11 @@ struct FeedCell: View {
 //                .padding(.leading,10)
 //                .padding(.top,-8)
 //                .foregroundColor(.gray)
+            
+        }.onAppear{
+            Task{
+                try await feedCellService.fetchPost(postId: post.id)
+            }
             
         }
     }

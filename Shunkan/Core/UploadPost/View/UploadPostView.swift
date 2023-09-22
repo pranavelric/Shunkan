@@ -35,9 +35,12 @@ struct UploadPostView: View {
                                     }
                 
                                     NewPostView(viewModel: viewModel,tabIndex: $tabIndex)
+               
 
                 
                 
+        }.onAppear{
+            isCanceled = false
         }
         
         

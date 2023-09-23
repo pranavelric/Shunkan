@@ -11,7 +11,7 @@ struct CreateItemSheet: View {
     var body: some View {
         List{
             
-            ForEach(Sheet.SETTINGS_SHEET_ITEMS){ item in
+            ForEach(Sheet.CREATE_ITEM_SHEET_ITEMS){ item in
                 
                 
     

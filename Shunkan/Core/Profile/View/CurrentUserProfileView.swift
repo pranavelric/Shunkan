@@ -198,7 +198,7 @@ ScrollView{
           } label: {
               Image(systemName: "plus.square.fill").foregroundColor(.gray.opacity(0.6))
           }.sheet(isPresented: $createSheetToggle){
-              SettingSheets().presentationDetents([ .medium])
+                CreateItemSheet().presentationDetents([ .medium])
                   .presentationDragIndicator(.visible)
                   .presentationCornerRadius(20)
           }

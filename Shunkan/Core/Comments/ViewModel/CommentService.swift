@@ -21,8 +21,6 @@ struct CommentService{
         let snapshot  =  try await  CommentService.commentsId(postId: postId).collection("comments").getDocuments()
         
         var comments = try snapshot.documents.compactMap({try $0.data(as: Comment.self)})
-        print(comments)
-        print("Here")
         
         for i in 0..<comments.count {
             var comment = comments[i]
@@ -34,7 +32,6 @@ struct CommentService{
         let sortedComments = comments.sorted {  c1, c2 in
             return c1.timestamp.dateValue() > c2.timestamp.dateValue()
         }
-        print("the comments are \(sortedComments)")
         
         return sortedComments
         

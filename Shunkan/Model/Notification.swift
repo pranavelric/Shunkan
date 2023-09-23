@@ -40,13 +40,6 @@ struct NotificationObject: Codable,Hashable, Identifiable{
 }
 
 
-//struct PostNotificationObject: NotificationObject {
-//    var id: String
-//    var objectID: String
-//    var postID: String
-//}
-
-
 
 
 
@@ -61,25 +54,3 @@ extension Notification {
     ]
 }
 
-
-
-//// Sample usage:
-//
-//let sender = User(userID: "1", username: "johndoe", email: "john@example.com", password: "hashedPassword")
-//let post = PostNotificationObject(objectID: "123")
-//let notification = Notification(notificationID: "456", type: .like, sender: sender, timestamp: Date(), isRead: false, object: post)
-//
-//// You can create an array of notifications to store user notifications.
-//var notifications: [Notification] = []
-//
-//// Sample function to mark a notification as read.
-//func markNotificationAsRead(notificationID: String) {
-//    if let index = notifications.firstIndex(where: { $0.notificationID == notificationID }) {
-//        notifications[index].isRead = true
-//    }
-//}
-//
-//// Sample function to retrieve unread notifications for a user.
-//func getUnreadNotifications(for user: User) -> [Notification] {
-//    return notifications.filter { !$0.isRead && $0.sender.userID != user.userID }
-//}

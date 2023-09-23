@@ -17,8 +17,9 @@ struct Chat: Encodable, Decodable, Hashable{
     var sender: String
     var username: String
     var timeStamp:Timestamp
+    var isPhoto:Bool
     var isCurrentUser:Bool{
         return AuthSerivce.shared.currentUser!.id == sender
     }
-    var isPhoto:Bool
+    
 }

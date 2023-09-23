@@ -10,20 +10,24 @@ import SDWebImageSwiftUI
 import Firebase
 struct ChatCell: View {
     
-    let user = User.MOCK_USERS[0]
-    
+
     let chat:Chat
+    @StateObject  var viewModel: MessagesCellViewModel
+    init(chat:Chat){
+        self.chat = chat
+        self._viewModel = StateObject(wrappedValue: MessagesCellViewModel(id: chat.sender))
+    }
     @State var isCurrentUser = false
     var body: some View {
         HStack{
             if !isCurrentUser{
                 VStack(alignment: .leading){
-                    Text(user.username)
+                    Text(viewModel.user?.username ?? "Unknown")
                         .font(.caption2)
                         .padding(.leading,40)
                     HStack{
-                        if ((chat.profile) != nil){
-                            AnimatedImage(url:   URL(string: chat.profile ?? "") )
+                        if ((viewModel.user?.profilePictureURL) != nil){
+                            AnimatedImage(url:   URL(string: viewModel.user?.profilePictureURL ?? "") )
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 30,height: 30)
@@ -37,15 +41,28 @@ struct ChatCell: View {
                                 .clipShape(Circle())
                         }
                         
+
+                        
+                        if(chat.isPhoto){
+                           
+                            AnimatedImage(url:   URL(string: chat.photoUrl) )
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaledToFill()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                                .cornerRadius(10)
+                          
+                        }else{
+                            Text("\(chat.textMessage)")
+                                .padding(10)
+                                .foregroundColor(Color.black)
+                                .background( Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)))
+                                .cornerRadius(10)
+                        }
                         
                         
-                        
-                        
-                        Text("\(chat.textMessage)")
-                            .padding(10)
-                            .foregroundColor(Color.black)
-                            .background( Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)))
-                            .cornerRadius(10)
+                      
                         
                     }
                     
@@ -56,11 +73,25 @@ struct ChatCell: View {
             
             else{
                 Spacer()
-                Text("\(chat.textMessage)")
-                          .padding(10)
-                          .foregroundColor( Color.white)
-                          .background( Color.pink )
-                          .cornerRadius(10)
+               
+                if(chat.isPhoto == true){
+                   
+                    AnimatedImage(url:   URL(string: chat.photoUrl) )
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFill()
+                        .frame(width: 200, height: 200)
+                        .clipped()
+                        .cornerRadius(10)
+                  
+                }else{
+                    Text("\(chat.textMessage)")
+                              .padding(10)
+                              .foregroundColor( Color.white)
+                              .background( Color.pink )
+                              .cornerRadius(10)
+                }
+
             }
             
          

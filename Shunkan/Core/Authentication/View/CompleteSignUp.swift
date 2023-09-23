@@ -73,10 +73,7 @@ struct CompleteSignUp: View {
                 .alert(isPresented: $showError){
                     Alert(title: Text("Failed to register user"), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK"), action: {
                         shouldNavigate = true
-                        
-//                        viewModel.email    = ""
-//                        viewModel.username = ""
-//                        viewModel.password = ""
+
                         
                     } ))
                 }.background(

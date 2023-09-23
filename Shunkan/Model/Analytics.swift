@@ -35,12 +35,3 @@ struct AnalyticsModel {
     }
 }
 
-//// Sample usage:
-//
-//let user = User(userID: "1", username: "johndoe", email: "john@example.com", password: "hashedPassword")
-//let analyticsEvent = AnalyticsEvent(eventID: "123", eventName: "user_login", userID: user.userID, timestamp: Date(), eventData: ["source": "iOS App"])
-//
-//var analyticsModel = AnalyticsModel()
-//analyticsModel.logEvent(event: analyticsEvent)
-//
-//let analyticsData = analyticsModel.getAnalyticsData()

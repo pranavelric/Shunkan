@@ -24,7 +24,9 @@ class FeedCellService: ObservableObject{
     }
     // for cell
     func hasLikedPost(){
-        isLiked = post?.likes["\(AuthSerivce.shared.currentUser!.id )"] == true
+        if let id = AuthSerivce.shared.currentUser?.id{
+            isLiked = post?.likes["\(id)"] == true
+        }
     }
     
     func like() async throws{

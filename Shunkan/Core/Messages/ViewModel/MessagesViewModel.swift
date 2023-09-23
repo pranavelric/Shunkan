@@ -25,7 +25,7 @@ class MessagesViewModel: ObservableObject{
     func getMessages() async throws{
         let messageSnapshot = try await ChatService.userMessages(userId: AuthSerivce.shared.currentUser!.id).order(by: "timeStamp",descending: false).getDocuments()
         
-        var messages = try messageSnapshot.documents.compactMap({try $0.data(as: Messages.self)})
+        let messages = try messageSnapshot.documents.compactMap({try $0.data(as: Messages.self)})
         
         self.messages = messages
         

@@ -14,25 +14,16 @@ struct ChatsView: View {
     @StateObject var chatviewModel:ChatViewModel
     
     let user :User
-//    var recipientId = ""
-//    var recipientProfile = ""
-//    var recipientUsername = ""
+
     init(user:User){
         self.user = user
         self._chatviewModel = StateObject(wrappedValue: ChatViewModel(userId: user.id))
     }
     
     @State private var text: String = ""
-//    @State private var pickedImage: Image?
-//    @State private var chatImage: Image?
-//    @State private var showingActionSheet = false
-//    @State private var showingImagePicker = false
-//    @State private var imageData: Data = Data ()
-//    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-//    @State private var error:String = ""
-//    @State private var showingAlert = false
-//    @State private var alertTitle: String = "Oh No 😭"
-    
+
+    @State var showSheet = false
+    @State var isUploading = false
     @State private var cancellables: AnyCancellable?
     @Environment(\.dismiss) var dismiss
 
@@ -97,11 +88,8 @@ struct ChatsView: View {
                         ScrollViewReader{ value in
                             ForEach (chatviewModel.chats, id:\.messageId) { (chat) in
                                 VStack{
-                                    if chat.isPhoto{
-                                        //                                    PhotoChat(chat: chat)
-                                    } else{
                                         ChatCell(chat:chat)
-                                    }
+
                                 }.padding (.top)
                                 
                             } .onAppear{
@@ -136,28 +124,75 @@ struct ChatsView: View {
                 HStack{
                     
                     Button{
-                        
+                        // open media pice
+                       showSheet = true
+
                     }label: {
                         Image(systemName: "camera")
                             .foregroundColor(.pink)
                     }
+                    .sheet(isPresented: $showSheet) {
+                        
+                        MediaPicker(image: $chatviewModel.profileImage, isCanceled: .constant(false),cropTypeRectangle: true).interactiveDismissDisabled(true)
+                        
+                    }
                     
-                    TextField("Message ...", text: $text,axis: .vertical)
-                        .font(.footnote)
-                        .lineLimit(4)
-                        .padding(.horizontal,1)
-                    
-                        .foregroundColor(.black)
-                    
+                    if let selectedImage = chatviewModel.profileImage{
+                        Image(uiImage: selectedImage)
+                       
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(10)
+                            .clipped()
+                        Spacer()
+                        
+                    }
+                    else{
+                        TextField("Message ...", text: $text,axis: .vertical)
+                            .font(.footnote)
+                            .lineLimit(4)
+                            .padding(.horizontal,1)
+                            .foregroundColor(.black)
+                    }
                     
                     Button{
                         Task{
-                            try await  chatviewModel.sendMessage(message:text,recipientId:user.id,recipientProfile:user.profilePictureURL ,recipientName:user.username)
-                            text = ""
+                            
+                                if(chatviewModel.profileImage != nil){
+                                    
+                                    
+                                    withAnimation{
+                                        isUploading = true
+                                    }
+                                    
+                                    
+                                   try await chatviewModel.sendImageMessage( recipientId: user.id, recipientProfile: user.profilePictureURL, recipientName: user.username)
+                                    
+                                    withAnimation{
+                                        isUploading = false
+                                    }
+                                    
+                                    chatviewModel.profileImage = nil
+                                }
+                       
+                            else{
+                                
+                                try await  chatviewModel.sendMessage(message:text,recipientId:user.id,recipientProfile:user.profilePictureURL ,recipientName:user.username)
+                                text = ""
+                            }
                         }
                     } label: {
-                        Text("send")
-                            .foregroundColor(.pink)
+                        if isUploading{
+                            ProgressView()
+                                .foregroundColor(.pink)
+                        }
+                        
+                        else{
+                            Text("send")
+                                .foregroundColor(.pink)
+                        }
                     }
                 }
                 

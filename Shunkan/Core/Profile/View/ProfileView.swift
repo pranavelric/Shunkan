@@ -33,6 +33,7 @@ struct ProfileView: View {
     @State var createSheetToggle: Bool = false
     @State var settingsSheetToggle: Bool = false
     
+    @State var showMessageView:Bool = false
     
     
     @StateObject var viewModel :ProfileViewModel
@@ -177,6 +178,25 @@ struct ProfileView: View {
                             .alert(isPresented: $showError){
                                Alert(title: Text("Failed to \((viewModel.followCheck) ? "Unfollow": "Follow") "), message: Text("\(errorMsg ?? "")"), dismissButton: .default(Text("OK") ))
                            }
+                            
+                            if (!user.isCurrentUser){
+                                
+                                Button {
+                                    showMessageView = true
+                                } label: {
+                                    Text("Message")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.black.opacity(0.7))
+                                        .padding(.vertical, 10)
+                                        .frame( maxWidth: .infinity)
+                                        .background(Color.gray.opacity(0.3))
+                                        .cornerRadius(8)
+                                }.fullScreenCover(isPresented: $showMessageView, content: {
+                                            ChatsView(user: user)
+                                })
+
+                            }
                             
                             Button{
                                 

@@ -44,14 +44,7 @@ class ProfileViewModel: ObservableObject{
             self.followCheck = false
         }
         
-//        ProfileService.followersId(userId: userId).getDocument { ( document, error ) in
-//            
-//            if let doc = document, doc.exists {
-//                self.followCheck = true
-//            } else{
-//                self.followCheck = false
-//            }
-//        }
+
         
     }
     
@@ -81,11 +74,6 @@ class ProfileViewModel: ObservableObject{
         let followingSnapshot = try await  ProfileService.followingCollection(userId: userId).getDocuments ()
         self.followings = followingSnapshot.documents.count
         
-//        ProfileService.followingCollection(userId: userId).getDocuments { (querySnapshot,error) in
-//            if let doc = querySnapshot?.documents {
-//                self.followings = doc.count
-//            }
-//        }
     }
     
     
@@ -95,11 +83,7 @@ class ProfileViewModel: ObservableObject{
         let followersSnapshot = try await  ProfileService.followersCollection(userId: userId).getDocuments ()
         self.followers =  followersSnapshot.count
         
-//        ProfileService.followersCollection(userId: userId).getDocuments { (querySnapshot,error) in
-//            if let doc = querySnapshot?.documents {
-//                self.followers = doc.count
-//            }
-//        }
+
     }
     
 

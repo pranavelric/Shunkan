@@ -19,18 +19,7 @@ class FollowService: ObservableObject{
          let followersSnapshot = try await  ProfileService.followersCollection(userId: userId).getDocuments ()
          followersCount(followersSnapshot.count)
          
-         
-//        ProfileService.followingCollection(userId: userId).getDocuments {( snap,error) in
-//            if let doc = snap?.documents{
-//                followingCount(doc.count)
-//            }
-//        }
-        
-//        ProfileService.followersCollection(userId: userId).getDocuments {( snap,error) in
-//            if let doc = snap?.documents{
-//                followersCount(doc.count)
-//            }
-//        }
+
     }
     
     
@@ -59,22 +48,7 @@ class FollowService: ObservableObject{
         try await ProfileService.followersId(userId: userId).setData([:])
         try await self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
         
-//        ProfileService.followingId(userId: userId).setData([:]){ (err) in
-//            if err == nil{
-//                Task{
-//                  try await self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
-//                }
-//                }
-//        }
-//        
-//        ProfileService.followersId(userId: userId).setData([:]){ (err) in
-//            if err == nil{
-//                Task{
-//                    try await self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
-//                    
-//                }
-//            }
-//        }
+
         
         
     }
@@ -96,31 +70,6 @@ class FollowService: ObservableObject{
             try await   self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
         }
         
-        
-        
-//        ProfileService.followingId(userId: userId).getDocument { (document,err) in
-//            if let doc = document, doc.exists{
-//                doc.reference.delete()
-//                Task{
-//                  try await   self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
-//                }
-//              
-//            }
-//        }
-       
-//        
-//        ProfileService.followersId(userId: userId).getDocument { (document,err) in
-//            if let doc = document, doc.exists{
-//                doc.reference.delete()
-//                
-//                Task{
-//                    try await  self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
-//                    
-//                }
-//
-//               
-//            }
-//        }
         
     }
     

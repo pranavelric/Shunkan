@@ -30,7 +30,7 @@ struct CommentView: View {
                     }
                     else{
                         if(viewModel.comments.count == 0){
-                            Image("amico3")
+                            Image("not_found")
                                 .resizable()
                                 .scaledToFit()
                             Text("No comments found...")

@@ -20,7 +20,6 @@ struct FeedCell: View {
     var body: some View {
        
         VStack {
-//            Text(post)
             // profile-pic- username feed-settings button
             NavigationLink (value: post.user, label: {
                 HStack{
@@ -176,12 +175,7 @@ struct FeedCell: View {
                 .padding(.leading,10)
                 .padding(.top,-8)
                 .foregroundColor(.gray)
-//            Text("\(post.timestamp.timeAgoSinceNow())")
-//                .font(.footnote)
-//                .frame(maxWidth: .infinity,alignment: .leading)
-//                .padding(.leading,10)
-//                .padding(.top,-8)
-//                .foregroundColor(.gray)
+
             
         }.onAppear{
             Task{

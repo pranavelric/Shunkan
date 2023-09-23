@@ -46,8 +46,6 @@ class SearchFeedViewModel:ObservableObject{
             if compositionalArray.count % 2 == 0 ||  compositionalArray.count % 3 == 0{
                 if compositionalArr.count == 5{
                     
-                    print("index :\(compositionalArray.count)")
-                    print("elements :\(compositionalArr.count)")
                     compositionalArray.append(compositionalArr)
                     compositionalArr.removeAll()
                     
@@ -55,8 +53,6 @@ class SearchFeedViewModel:ObservableObject{
                 
             }else{
                 if compositionalArr.count == 3{
-                    print("index :\(compositionalArray.count)")
-                    print("elements :\(compositionalArr.count)")
                     compositionalArray.append(compositionalArr)
                     compositionalArr.removeAll()
                     

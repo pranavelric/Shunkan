@@ -12,9 +12,14 @@ struct MessageView: View {
     let currentUser = AuthSerivce.shared.currentUser
     @Environment(\.dismiss) var dismiss
     @StateObject var messageViewModel = MessagesViewModel()
+    @State var searchText:String = ""
     
-
-    
+    var searchResults: [Messages] {
+        if searchText.isEmpty {
+            return messageViewModel.messages
+        }
+        return messageViewModel.messages.filter { $0.receiverUsername.contains(searchText) }
+    }
     
     var body: some View {
         NavigationView{
@@ -24,12 +29,12 @@ struct MessageView: View {
                     ScrollView{
                         
                         LazyVStack(spacing: 24){
-                            ForEach(messageViewModel.messages){ message in
+                            ForEach(searchResults){ message in
                                 
                                 MessageCellView( message: message)
                              
                             }
-                        }
+                        } .searchable(text: $searchText)
 
                     }.padding(10)
                 }

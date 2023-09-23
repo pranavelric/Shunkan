@@ -17,4 +17,5 @@ struct Messages: Encodable, Decodable, Hashable, Identifiable{
     var timeStamp:Timestamp
     var isPhoto:Bool
     var receiverId:String
+    var receiverUsername:String
 }

@@ -30,7 +30,6 @@
 		1E3815D42AA87F6E00B5AFA3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3815D32AA87F6E00B5AFA3 /* SignInView.swift */; };
 		1E3CE1FD2AAB727E00BCC3F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE1FC2AAB727E00BCC3F8 /* User.swift */; };
 		1E3CE1FF2AAB8DC500BCC3F8 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE1FE2AAB8DC500BCC3F8 /* Comment.swift */; };
-		1E3CE2012AAB8FCA00BCC3F8 /* Likable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE2002AAB8FCA00BCC3F8 /* Likable.swift */; };
 		1E3CE2032AAB8FDF00BCC3F8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE2022AAB8FDF00BCC3F8 /* Post.swift */; };
 		1E3CE2052AAB908200BCC3F8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE2042AAB908200BCC3F8 /* Notification.swift */; };
 		1E3CE2092AABA4EE00BCC3F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CE2082AABA4EE00BCC3F8 /* Settings.swift */; };
@@ -122,7 +121,6 @@
 		1E3815D32AA87F6E00B5AFA3 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		1E3CE1FC2AAB727E00BCC3F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1E3CE1FE2AAB8DC500BCC3F8 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		1E3CE2002AAB8FCA00BCC3F8 /* Likable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Likable.swift; sourceTree = "<group>"; };
 		1E3CE2022AAB8FDF00BCC3F8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1E3CE2042AAB908200BCC3F8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		1E3CE2082AABA4EE00BCC3F8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 			children = (
 				1E3CE1FC2AAB727E00BCC3F8 /* User.swift */,
 				1E3CE1FE2AAB8DC500BCC3F8 /* Comment.swift */,
-				1E3CE2002AAB8FCA00BCC3F8 /* Likable.swift */,
 				1E3CE2022AAB8FDF00BCC3F8 /* Post.swift */,
 				1E3CE2042AAB908200BCC3F8 /* Notification.swift */,
 				1E3CE2082AABA4EE00BCC3F8 /* Settings.swift */,
@@ -840,7 +837,6 @@
 				1EC406A42ABEE1E90072AFAB /* MessagesViewModel.swift in Sources */,
 				1E3CE2092AABA4EE00BCC3F8 /* Settings.swift in Sources */,
 				1E994CC72AACFD890063DA4A /* Date.swift in Sources */,
-				1E3CE2012AAB8FCA00BCC3F8 /* Likable.swift in Sources */,
 				1E0AB7272AB420D6004D825B /* Sheet.swift in Sources */,
 				1E964E572ABC2F4D00FCDC05 /* PostService.swift in Sources */,
 				1E3CE2052AAB908200BCC3F8 /* Notification.swift in Sources */,

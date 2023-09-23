@@ -42,7 +42,6 @@ struct Grids: View {
                     }
                 
             }
-//            .frame(height: 1900, alignment: .top)
 
             
         

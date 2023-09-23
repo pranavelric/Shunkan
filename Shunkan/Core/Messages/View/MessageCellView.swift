@@ -67,5 +67,5 @@ struct MessageCellView: View {
 }
 
 #Preview {
-    MessageCellView(message: Messages(lastMessage: "last message", userId: "1", username: "test", timeStamp: Timestamp(), isPhoto: false, receiverId: "1"))
+    MessageCellView(message: Messages(lastMessage: "last message", userId: "1", username: "test", timeStamp: Timestamp(), isPhoto: false, receiverId: "1",receiverUsername: "te"))
 }

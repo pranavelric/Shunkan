@@ -198,9 +198,10 @@ struct ProfileView: View {
 
                             }
                             
-                            Button{
-                                
-                            } label:{
+
+                            
+                            
+                            ShareLink(item: user.username, subject: Text("Discover an Impressive Profile 🚀"), message: Text("Hey there! I found this extraordinary profile that you absolutely need to check out. 🌟")) {
                                 Text("Share Profile")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
@@ -210,6 +211,8 @@ struct ProfileView: View {
                                     .background(Color.gray.opacity(0.3))
                                     .cornerRadius(8)
                             }
+                            .padding(1)
+                            
                             
                             Button{
                                 

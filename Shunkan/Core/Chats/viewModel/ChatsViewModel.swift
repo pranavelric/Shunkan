@@ -38,8 +38,8 @@ class ChatViewModel: ObservableObject{
         let SenderMessageDoc = ChatService.messageId(senderId: senderId, recipientId: recipientId)
         let ReceiverMessageDoc = ChatService.messageId(senderId: recipientId, recipientId: senderId)
         
-        let senderMessage = Messages( lastMessage: message, userId: senderId, profile: senderProfilePic, username: senderUsername, timeStamp: Timestamp(), isPhoto: false, receiverId: recipientId)
-        let recipientMessage = Messages(lastMessage: message, userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: false,receiverId: senderId)
+        let senderMessage = Messages( lastMessage: message, userId: senderId, profile: senderProfilePic, username: senderUsername, timeStamp: Timestamp(), isPhoto: false, receiverId: recipientId,receiverUsername: recipientName)
+        let recipientMessage = Messages(lastMessage: message, userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: false,receiverId: senderId,receiverUsername: senderUsername)
         
         guard let encodedSenderMessage = try? Firestore.Encoder().encode(senderMessage) else {return}
         guard let encodedRecipientrMessage = try? Firestore.Encoder().encode(recipientMessage) else {return}
@@ -94,8 +94,8 @@ class ChatViewModel: ObservableObject{
         let SenderMessageDoc = ChatService.messageId(senderId: senderId, recipientId: recipientId)
         let ReceiverMessageDoc = ChatService.messageId(senderId: recipientId, recipientId: senderId)
         
-        let senderMessage = Messages( lastMessage: "image sent", userId: senderId, profile: senderProfilePic, username: senderUserName, timeStamp: Timestamp(), isPhoto: true,receiverId: recipientId)
-        let recipientMessage = Messages(lastMessage: "image received", userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: true,receiverId: senderId)
+        let senderMessage = Messages( lastMessage: "image sent", userId: senderId, profile: senderProfilePic, username: senderUserName, timeStamp: Timestamp(), isPhoto: true,receiverId: recipientId,receiverUsername: recipientName)
+        let recipientMessage = Messages(lastMessage: "image received", userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: true,receiverId: senderId,receiverUsername: senderUserName)
         
         guard let encodedSenderMessage = try? Firestore.Encoder().encode(senderMessage) else {return}
         guard let encodedRecipientrMessage = try? Firestore.Encoder().encode(recipientMessage) else {return}

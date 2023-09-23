@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
 
     @StateObject var viewModel: FeedViewModel = FeedViewModel()
+    @State var showMessageView = false
     var body: some View {
         
         NavigationStack {
@@ -57,10 +58,13 @@ struct FeedView: View {
                             Image(systemName: "heart")
                         }
                         Button{
-                            
+                            showMessageView = true
                         } label: {
                             Image(systemName: "paperplane")
                         }
+                        .fullScreenCover(isPresented: $showMessageView, content: {
+                            MessageView()
+                        })
                     }
                     .foregroundColor(.gray.opacity(0.6))
                 }

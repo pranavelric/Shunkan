@@ -37,8 +37,8 @@ class ChatViewModel: ObservableObject{
         let SenderMessageDoc = ChatService.messageId(senderId: senderId, recipientId: recipientId)
         let ReceiverMessageDoc = ChatService.messageId(senderId: recipientId, recipientId: senderId)
         
-        let senderMessage = Messages( lastMessage: message, userId: senderId, profile: senderProfilePic, username: senderUsername, timeStamp: Timestamp(), isPhoto: false)
-        let recipientMessage = Messages(lastMessage: message, userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: false)
+        let senderMessage = Messages( lastMessage: message, userId: senderId, profile: senderProfilePic, username: senderUsername, timeStamp: Timestamp(), isPhoto: false, receiverId: recipientId)
+        let recipientMessage = Messages(lastMessage: message, userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: false,receiverId: senderId)
         
         guard let encodedSenderMessage = try? Firestore.Encoder().encode(senderMessage) else {return}
         guard let encodedRecipientrMessage = try? Firestore.Encoder().encode(recipientMessage) else {return}
@@ -73,26 +73,32 @@ class ChatViewModel: ObservableObject{
     @MainActor
     func getChats(userId:String) async throws{
         // all chats
+        
+        let chatsSnapshot = try await ChatService.conversation(sender: AuthSerivce.shared.currentUser!.id, recipient: userId).order(by: "timeStamp",descending: false)
+        
+            .addSnapshotListener { querySnapshot, error in
+                   guard let documents = querySnapshot?.documents else {
+                       print("Error fetching documents: \(error!)")
+                       return
+                   }
+                do{
+                    let chats = try documents.compactMap({try $0.data(as: Chat.self)})
+                    self.chats = chats
+                  
+                }catch{
+                    print("error")
+                }
+                
+               }
 
-        let chatsSnapshot = try await ChatService.conversation(sender: AuthSerivce.shared.currentUser!.id, recipient: userId).order(by: "timeStamp",descending: false).getDocuments()
-       
-        var chats = try chatsSnapshot.documents.compactMap({try $0.data(as: Chat.self)})
 
         
-    
 
-        self.chats = chats
+//        var chats = try chatsSnapshot.documents.compactMap({try $0.data(as: Chat.self)})
+//        self.chats = chats
     }
     
-    func getMessages() async throws{
-        let messageSnapshot = try await ChatService.userMessages(userId: AuthSerivce.shared.currentUser!.id).order(by: "timeStamp",descending: false).getDocuments()
-        
-        var messages = try messageSnapshot.documents.compactMap({try $0.data(as: Messages.self)})
-        
-        self.messages = messages
-        
-    }
-    
+
     
     
 }

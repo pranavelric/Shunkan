@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct Messages: Encodable, Decodable, Hashable{
+struct Messages: Encodable, Decodable, Hashable, Identifiable{
     var id = UUID()
     var lastMessage: String
     var userId:String
@@ -16,4 +16,5 @@ struct Messages: Encodable, Decodable, Hashable{
     var username: String
     var timeStamp:Timestamp
     var isPhoto:Bool
+    var receiverId:String
 }

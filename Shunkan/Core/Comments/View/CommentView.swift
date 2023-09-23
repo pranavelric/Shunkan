@@ -29,7 +29,9 @@ struct CommentView: View {
                         ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     else{
+                        
                         if(viewModel.comments.count == 0){
+                            Spacer()
                             Image("not_found")
                                 .resizable()
                                 .scaledToFit()

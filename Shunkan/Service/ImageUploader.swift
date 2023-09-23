@@ -62,8 +62,8 @@ struct ImageUploader{
         let SenderMessageDoc = ChatService.messageId(senderId: senderId, recipientId: recipientId)
         let ReceiverMessageDoc = ChatService.messageId(senderId: recipientId, recipientId: senderId)
         
-        let senderMessage = Messages( lastMessage: "", userId: senderId, profile: senderProfilePic, username: senderUserName, timeStamp: Timestamp(), isPhoto: true)
-        let recipientMessage = Messages(lastMessage: "", userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: true)
+        let senderMessage = Messages( lastMessage: "", userId: senderId, profile: senderProfilePic, username: senderUserName, timeStamp: Timestamp(), isPhoto: true,receiverId: recipientId)
+        let recipientMessage = Messages(lastMessage: "", userId: recipientId, profile: recipientProfile, username: recipientName, timeStamp: Timestamp(), isPhoto: true,receiverId: senderId)
         
         guard let encodedSenderMessage = try? Firestore.Encoder().encode(senderMessage) else {return}
         guard let encodedRecipientrMessage = try? Firestore.Encoder().encode(recipientMessage) else {return}

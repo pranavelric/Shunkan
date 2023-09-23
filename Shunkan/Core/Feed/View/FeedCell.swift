@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct FeedCell: View {
     let post: Post
     @StateObject var feedCellService: FeedCellService
-    
+    @State var presentComment:Bool = false
     init(post: Post) {
         self.post = post
         self._feedCellService = StateObject(wrappedValue: FeedCellService(postId: post.id))
@@ -82,10 +82,16 @@ struct FeedCell: View {
             HStack{
                 Button{
                     if(feedCellService.isLiked){
-                        feedCellService.unLike()
+                        Task{
+                            try await feedCellService.unLike()
+                        }
+                       
                     }
                     else{
-                        feedCellService.like()
+                        Task{
+                            try await  feedCellService.like()
+                        }
+                       
                     }
                 } label: {
                     if(feedCellService.isLiked){
@@ -96,11 +102,19 @@ struct FeedCell: View {
                     }
                 }
                 
-                Button{
-                    
-                } label: {
-                    Image(systemName: "message")
-                }
+              
+                    Button{
+                        presentComment = true
+                    } label: {
+                        Image(systemName: "message")
+                    }
+                    .sheet(isPresented: $presentComment) {
+                        CommentView(postId: post.id)
+                            .presentationDragIndicator(.visible)
+                           
+                    }
+
+
                 
                 Button{
                     
@@ -143,13 +157,16 @@ struct FeedCell: View {
                 .padding(.leading,10)
             
             //comment-label
-            if post.comments.count > 0{
-                Text("View all \(post.comments.count) comments")
+            if post.comments > 0{
+                Text("View all \(post.comments) comments")
                     .font(.footnote)
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .padding(.leading,10)
                     .padding(.top,-6)
                     .foregroundColor(.gray)
+                    .onTapGesture {
+                        presentComment = true
+                    }
             }
       
             // time label
@@ -169,6 +186,7 @@ struct FeedCell: View {
         }.onAppear{
             Task{
                 try await feedCellService.fetchPost(postId: post.id)
+                feedCellService.hasLikedPost()
             }
             
         }

@@ -24,26 +24,34 @@ class FeedCellService: ObservableObject{
     }
     // for cell
     func hasLikedPost(){
-        isLiked = (post?.likes["\(AuthSerivce.shared.currentUser!.id )"] == true)
+        isLiked = post?.likes["\(AuthSerivce.shared.currentUser!.id )"] == true
     }
     
-    func like(){
+    func like() async throws{
         post!.likeCount += 1
         isLiked = true
         
-        Firestore.firestore().collection("posts").document(post!.id).updateData([
+        var data =  try await Firestore.firestore().collection("posts").document(post!.id).getDocument(as: Post.self)
+        data.likes.updateValue(true, forKey: AuthSerivce.shared.currentUser!.id)
+        
+        
+        try await Firestore.firestore().collection("posts").document(post!.id).updateData([
             "likeCount": FieldValue.increment(Int64(1)),
-            "like" : ["\(AuthSerivce.shared.currentUser!.id )" : true]
+            "likes" : data.likes
         ])
     }
     
-    func unLike(){
+    func unLike()async throws{
         post!.likeCount -= 1
         isLiked = false
         
-        Firestore.firestore().collection("posts").document(post!.id).updateData([
+        var data =  try await Firestore.firestore().collection("posts").document(post!.id).getDocument(as: Post.self)
+        data.likes.updateValue(false, forKey: AuthSerivce.shared.currentUser!.id)
+
+        
+        try await Firestore.firestore().collection("posts").document(post!.id).updateData([
             "likeCount": FieldValue.increment(Int64(-1)),
-            "like" : ["\(AuthSerivce.shared.currentUser!.id)" : false]
+            "likes" : data.likes
         ])
     }
     
@@ -53,6 +61,7 @@ class FeedCellService: ObservableObject{
      let docSnap =  try? await Firestore.firestore().collection("posts").document(postId).getDocument()
         if let doc = docSnap, doc.exists{
             self.post = try doc.data(as: Post.self)
+
         }
     }
 }

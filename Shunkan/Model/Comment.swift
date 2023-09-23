@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import Firebase
 struct Comment:  Codable, Identifiable, Hashable {
     var id: String
     var text: String
-    var user: User // The user who made the comment
-    var timestamp: Date // The date and time the comment was posted
+    var timestamp: Timestamp// The date and time the comment was posted
+    var userName: String
+    var profile:String?
+    var postId:String
+    var ownerId:String
+    var user:User?
+
 
 
 }
@@ -18,12 +24,13 @@ struct Comment:  Codable, Identifiable, Hashable {
 
 
 extension Comment{
-    static var  MOCK_USER = User(id: "1", username: "johndoe", email: "john@example.com", profilePictureURL:  "https://example.com/user1.jpg", bio: "I love photography.", stories: [], highlights: [], friends: [], followers: [], following: [], posts: 0)
+    
 
     static var MOCK_Comment: [Comment] = [
-        .init(id: "1", text: "Great photo!", user: MOCK_USER, timestamp: Date()),
-        .init(id: "2", text: "Nice photo!", user: MOCK_USER, timestamp: Date()),
-        .init(id: "3", text: "Not So Great photo!", user: MOCK_USER, timestamp: Date()),
-        .init(id: "4", text: "Not so Nice photo!", user: MOCK_USER, timestamp: Date())
+        .init(id: "1", text: "Great photo!", timestamp: Timestamp(),userName: "Test",profile: "profile",postId:"postId",ownerId: "ownerId"),
+        .init(id: "2", text: "Great photo!", timestamp: Timestamp(),userName: "Test",profile: "profile",postId:"postId",ownerId: "ownerId"),
+        .init(id: "3", text: "Great photo!", timestamp: Timestamp(),userName: "Test",profile: "profile",postId:"postId",ownerId: "ownerId"),
+        .init(id: "4", text: "Great photo!", timestamp: Timestamp(),userName: "Test",profile: "profile",postId:"postId",ownerId: "ownerId"),
+        .init(id: "5", text: "Great photo!", timestamp: Timestamp(),userName: "Test",profile: "profile",postId:"postId",ownerId: "ownerId"),
     ]
 }
